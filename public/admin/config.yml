@@ -1,27 +1,31 @@
 # Decap CMS configuration for A Cut Above Barber Shop.
-# Edit content via https://acutabovebarbersc.com/admin/ once auth is wired up.
-#
-# AUTH SETUP — one-time, after pushing to GitHub + signing up for Decap Bridge:
-#   1. Push this repo to GitHub (private repo recommended).
-#   2. Sign up at https://decapbridge.com (free), connect your GitHub repo.
-#   3. Replace the `repo:` line below with your actual GitHub user/repo.
-#   4. Decap Bridge handles the OAuth handoff — no Netlify Identity needed.
-#   5. Visit /admin/ and click "Login with GitHub".
-#
-# Until those steps are done, the admin UI loads but login won't succeed.
+# Edit content via https://acutabovebarbersc.com/admin/
 
+# DecapBridge PKCE auth (so editors can log in with Google / Microsoft /
+# password and never need a GitHub account). Snippet from DecapBridge dashboard.
 backend:
-  name: github
+  name: git-gateway
   repo: Woollbert/ACutAboveBarberSC
   branch: main
-  base_url: https://decapbridge.com
-  auth_endpoint: /auth
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/80ef284f-4148-4bec-b706-8acce4211a0c/pkce
+  auth_token_endpoint: /sites/80ef284f-4148-4bec-b706-8acce4211a0c/token
+  gateway_url: https://gateway.decapbridge.com
   commit_messages:
-    create: "CMS: create {{collection}} '{{slug}}'"
-    update: "CMS: update {{collection}} '{{slug}}'"
-    delete: "CMS: delete {{collection}} '{{slug}}'"
-    uploadMedia: "CMS: upload '{{path}}'"
-    deleteMedia: "CMS: delete '{{path}}'"
+    create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge'
+    openAuthoring: 'Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge'
+
+# PKCE claims so DecapBridge can identify each editor in commit attribution.
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
 
 # Where uploaded media (barber photos, shop interior) get saved in the repo.
 media_folder: "public/uploads"
@@ -29,7 +33,7 @@ public_folder: "/uploads"
 
 site_url: https://acutabovebarbersc.com
 display_url: https://acutabovebarbersc.com
-logo_url: https://acutabovebarbersc.com/favicon.svg
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Show a compact preview of recent commits / publishing state.
 publish_mode: simple
