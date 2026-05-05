@@ -2,6 +2,13 @@
 import { site, fullAddress } from '../data/site';
 import { services } from '../data/services';
 
+const sameAs = [
+  site.social.instagram,
+  site.social.facebook,
+  site.social.tiktok,
+  site.social.google,
+].filter((u): u is string => typeof u === 'string' && u.length > 0);
+
 const data = {
   "@context": "https://schema.org",
   "@type": ["BarberShop", "LocalBusiness", "HealthAndBeautyBusiness"],
@@ -31,6 +38,7 @@ const data = {
     { "@type": "City", name: "San Juan Capistrano" },
     { "@type": "Place", name: "Camp Pendleton" },
   ],
+  ...(sameAs.length > 0 ? { sameAs } : {}),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Barber & Hair Services",

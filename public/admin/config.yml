@@ -82,11 +82,12 @@ collections:
             fields:
               - { label: "Latitude",  name: "lat", widget: "number", value_type: "float", step: 0.0001 }
               - { label: "Longitude", name: "lng", widget: "number", value_type: "float", step: 0.0001 }
-          - label: "Social links (optional)"
+          - label: "Shop social links (optional)"
             name: "social"
             widget: "object"
             fields:
               - { label: "Instagram URL",      name: "instagram", widget: "string", required: false }
+              - { label: "TikTok URL",         name: "tiktok",    widget: "string", required: false }
               - { label: "Facebook URL",       name: "facebook",  widget: "string", required: false }
               - { label: "Google profile URL", name: "google",    widget: "string", required: false }
 
@@ -146,7 +147,7 @@ collections:
             widget: "list"
             summary: "{{fields.name}} — {{fields.role}}"
             fields:
-              - { label: "URL slug",    name: "slug",     widget: "string", hint: "Lowercase, hyphens only. e.g. 'kristy-rogers'." }
+              - { label: "URL slug",    name: "slug",     widget: "string", hint: "Lowercase, hyphens only. e.g. 'kristy-rogers'. Used in the URL: /barbers/<slug>/" }
               - { label: "Name",        name: "name",     widget: "string" }
               - { label: "Role",        name: "role",     widget: "select", options: ["Owner", "Co-Owner", "Barber"] }
               - { label: "Years",       name: "years",    widget: "string", hint: "e.g. '12+ years' or '2.5 years'." }
@@ -156,4 +157,21 @@ collections:
                 name: "specialties"
                 widget: "list"
                 field: { label: "Specialty", name: "specialty", widget: "string" }
-              - { label: "Photo",       name: "photo",    widget: "image", required: false, hint: "Upload a square photo (~600×600px). Leave blank to use the monogram placeholder." }
+              - { label: "Headshot photo", name: "photo", widget: "image", required: false, hint: "Upload a square photo (~600×600px). Leave blank to use the monogram placeholder." }
+              - label: "Social links (optional)"
+                name: "social"
+                widget: "object"
+                hint: "This barber's personal social accounts. Leave any field blank to hide that icon."
+                fields:
+                  - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+                  - { label: "TikTok URL",    name: "tiktok",    widget: "string", required: false }
+                  - { label: "Facebook URL",  name: "facebook",  widget: "string", required: false }
+              - label: "Portfolio (this barber's work samples)"
+                name: "portfolio"
+                widget: "list"
+                required: false
+                summary: "{{fields.caption}}"
+                hint: "Upload photos of this barber's cuts. Each appears in their portfolio gallery on the /barbers/<slug>/ page."
+                fields:
+                  - { label: "Photo",   name: "image",   widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false, hint: "Short description, e.g. 'Skin fade with razor lineup'." }

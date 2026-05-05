@@ -22,5 +22,10 @@
     { "day": "Thu - Sat",  "time": "9:00 AM - 6:00 PM" }
   ],
   "geo": { "lat": 33.4153, "lng": -117.6167 },
-  "social": { "instagram": "", "facebook": "", "google": "" }
+  "social": {
+    "instagram": "https://www.instagram.com/barberdoll_slays",
+    "facebook":  "https://www.facebook.com/profile.php?id=61578076672735",
+    "tiktok":    "https://www.tiktok.com/@acutabove_barbershop_sc",
+    "google":    ""
+  }
 }

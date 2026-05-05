@@ -1,10 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import CtaBand from '../components/CtaBand.astro';
-import BarberAvatar from '../components/BarberAvatar.astro';
-import { barbers } from '../data/barbers';
-import { site } from '../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import BarberAvatar from '../../components/BarberAvatar.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
+import { barbers } from '../../data/barbers';
+import { site } from '../../data/site';
 ---
 <BaseLayout
   title="Meet the Barbers"
@@ -13,7 +14,7 @@ import { site } from '../data/site';
   <PageHeader
     eyebrow="The team"
     title="Meet the barbers."
-    subtitle="At A Cut Above, our team brings experience, precision, and passion to every cut. Each barber has their own specialty, so you can choose the right fit for your style."
+    subtitle="At A Cut Above, our team brings experience, precision, and passion to every cut. Each barber has their own specialty — click any name to see their full portfolio."
   />
 
   <section class="section">
@@ -22,14 +23,23 @@ import { site } from '../data/site';
         <article id={b.slug} class="card p-6 md:p-10">
           <div class="grid md:grid-cols-12 gap-8 items-start">
             <div class={`md:col-span-4 flex flex-col items-center text-center ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-              <BarberAvatar name={b.name} photo={b.photo} size="lg" />
-              <h2 class="mt-5 text-2xl font-semibold" style="font-family: var(--font-display);">{b.name}</h2>
+              <a href={`/barbers/${b.slug}/`} class="block hover:opacity-90 transition-opacity">
+                <BarberAvatar name={b.name} photo={b.photo} size="lg" />
+              </a>
+              <h2 class="mt-5 text-2xl font-semibold" style="font-family: var(--font-display);">
+                <a href={`/barbers/${b.slug}/`} class="hover:underline" style="text-decoration-color: var(--color-gold);">{b.name}</a>
+              </h2>
               <p class="mt-1 text-xs uppercase tracking-[0.22em]" style="color: var(--color-gold-deep);">
                 {b.role} • {b.years}
               </p>
               <p class="mt-4 text-base italic max-w-xs" style="font-family: var(--font-display); color: var(--color-ink-soft);">
                 "{b.tagline}"
               </p>
+              {b.social && (
+                <div class="mt-4">
+                  <SocialLinks social={b.social} size="sm" />
+                </div>
+              )}
             </div>
 
             <div class={`md:col-span-8 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
@@ -46,11 +56,13 @@ import { site } from '../data/site';
               </div>
 
               <div class="mt-7 flex flex-wrap gap-3">
+                <a href={`/barbers/${b.slug}/`} class="btn btn-primary">
+                  See {b.name.split(' ')[0]}'s portfolio →
+                </a>
                 {site.bookingUrl && (
                   <a href={site.bookingUrl} target="_blank" rel="noopener" class="btn btn-gold">Book Online</a>
                 )}
-                <a href={`tel:${site.phoneTel}`} class={site.bookingUrl ? "btn btn-outline" : "btn btn-primary"}>Call to book {b.name.split(' ')[0]}</a>
-                <a href={site.smsHref} class="btn btn-outline">Text us</a>
+                <a href={`tel:${site.phoneTel}`} class="btn btn-outline">Call to book</a>
               </div>
             </div>
           </div>

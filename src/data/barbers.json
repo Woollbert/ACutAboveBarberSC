@@ -14,7 +14,13 @@
         "Women's haircuts",
         "Color & highlights"
       ],
-      "photo": ""
+      "photo": "",
+      "social": {
+        "instagram": "https://www.instagram.com/barberdoll_slays",
+        "tiktok": "",
+        "facebook": ""
+      },
+      "portfolio": []
     },
     {
       "slug": "deandre-james",
@@ -30,7 +36,13 @@
         "Intricate designs",
         "Hair color & shear cutting"
       ],
-      "photo": ""
+      "photo": "",
+      "social": {
+        "instagram": "",
+        "tiktok": "",
+        "facebook": ""
+      },
+      "portfolio": []
     },
     {
       "slug": "heather-bravo",
@@ -45,7 +57,13 @@
         "Women's haircuts",
         "Hair color"
       ],
-      "photo": ""
+      "photo": "",
+      "social": {
+        "instagram": "",
+        "tiktok": "",
+        "facebook": ""
+      },
+      "portfolio": []
     },
     {
       "slug": "mario-gonzalez",
@@ -59,7 +77,13 @@
         "Straight razor shaves",
         "Gentleman's cuts"
       ],
-      "photo": ""
+      "photo": "",
+      "social": {
+        "instagram": "",
+        "tiktok": "",
+        "facebook": ""
+      },
+      "portfolio": []
     },
     {
       "slug": "rafa",
@@ -72,7 +96,13 @@
         "Gentleman's cuts",
         "Straight razor fades"
       ],
-      "photo": ""
+      "photo": "",
+      "social": {
+        "instagram": "",
+        "tiktok": "",
+        "facebook": ""
+      },
+      "portfolio": []
     }
   ]
 }

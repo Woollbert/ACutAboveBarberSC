@@ -15,7 +15,8 @@ export const site = {
     { href: "/",          label: "Home" },
     { href: "/about/",    label: "About" },
     { href: "/services/", label: "Services" },
-    { href: "/barbers/",  label: "Meet the Barbers" },
+    { href: "/barbers/",  label: "Barbers" },
+    { href: "/gallery/",  label: "Gallery" },
     { href: "/contact/",  label: "Visit & Book" },
   ],
 };
