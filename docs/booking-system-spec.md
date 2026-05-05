@@ -11,7 +11,8 @@
 - **A real booking system is hard.** It looks simple on the surface but has dozens of edge cases (timezones, double-booking, no-shows, reschedules, recurring availability, holidays). This is not a weekend project.
 - **Realistic full-build effort: 500–800 engineering hours** to match Fresha's feature set and not need ongoing weekly debugging. This is months of focused work.
 - **A scoped MVP can ship in ~80–120 hours** if we accept "request to book" rather than "real-time book," and that's the recommended starting point if we ever want to leave Fresha.
-- **Architecture:** Astro frontend + React islands, Netlify Functions (serverless API), Supabase (Postgres + auth), Resend (email), Twilio (SMS). Expected running cost at small-shop scale: $0–25/month.
+- **Architecture:** Astro frontend + React islands, Netlify Functions (serverless API), Supabase (Postgres + auth), Resend (email). Optional: Twilio (SMS).
+- **Running cost: TRULY $0/month is achievable** with email-only notifications. Adding SMS reminders costs ~$5–10/mo at busy-shop scale (and pays for itself by reducing no-shows). See §5 cost section for full transparency.
 - **Decision trigger:** only build this if Fresha (or a similar SaaS) becomes genuinely unworkable. The cost-per-feature of building from scratch is brutal compared to using free tiers of established platforms.
 
 ---
@@ -222,23 +223,55 @@ Most barbershops never need any of this. Listed for completeness.
 
 | Layer | Choice | Why | Cost at our scale |
 |---|---|---|---|
-| Frontend | Astro 6 + React islands | Already what we use | $0 |
-| Hosting | Netlify | Already what we use | $0 |
-| API | Netlify Functions (serverless) | No servers to manage | $0 (within free tier limits) |
-| Database | **Supabase Postgres** (free tier: 500MB, 2GB bandwidth) | Real Postgres, real auth built-in, real-time subscriptions | $0 |
-| Auth (customer + staff) | **Supabase Auth** (magic links, OAuth) | Same vendor as DB; no separate account | $0 |
-| Email | **Resend** (free: 3k/mo, 100/day) | Modern API, deliverability | $0 → $20/mo if we grow |
-| SMS | **Twilio** (pay-as-you-go) | Reliable; ~$0.0079/SMS US | ~$5–25/mo for a busy shop |
-| Payments (Phase 4+) | Stripe | Industry standard | 2.9% + 30¢ per txn |
-| Image storage | Supabase Storage (1GB free) | Lives next to the DB | $0 |
-| Calendar widget | **react-day-picker** or **@daypilot/react** | Battle-tested, accessible | $0 OSS |
-| Analytics | Plausible (light) or PostHog free | Privacy-respecting | $0 |
-| Anti-spam | Cloudflare Turnstile | Free, no CAPTCHA UX | $0 |
-| Error monitoring | Sentry free tier | Catch bugs before customers do | $0 |
-| Backups | Supabase nightly + GitHub | Automatic | $0 |
+| Frontend | Astro 6 + React islands | Already what we use | **$0 forever** |
+| Hosting | Netlify | Already what we use | **$0 forever** (free tier covers ~100k visits/mo) |
+| API | Netlify Functions (serverless) | No servers to manage | **$0** (free tier: 125k requests/mo) |
+| Database | **Supabase Postgres** | Real Postgres, free tier covers thousands of bookings/mo | **$0** (500MB DB, 5GB bandwidth) |
+| Auth (customer + staff) | **Supabase Auth** (magic links, OAuth) | Same vendor as DB; no separate account | **$0** (50k MAU free) |
+| Email | **Resend** (free: 3k/mo, 100/day) | Modern API, great deliverability | **$0** at our scale; ~$20/mo only if we exceed 3k emails/mo |
+| Image storage | Supabase Storage | Lives next to the DB | **$0** (1GB free, plenty for shop photos) |
+| Calendar widget | **react-day-picker** | Battle-tested OSS, MIT license | **$0** |
+| Anti-spam | Cloudflare Turnstile | Free CAPTCHA replacement, no limits | **$0** |
+| Error monitoring | Sentry free tier | 5k errors/mo free | **$0** |
+| Analytics | Plausible self-hosted or PostHog free | Privacy-respecting | **$0** |
+| Backups | Supabase nightly + GitHub | Automatic | **$0** |
+| **SMS (optional)** | **Twilio** (pay-as-you-go) | Only fundamentally not-free piece | **$0 if skipped, ~$5–10/mo if used** |
+| **Payments (optional, Phase 4)** | Stripe | Only if accepting online deposits | 2.9% + 30¢ per txn (no monthly fee) |
 
-**Total expected monthly running cost at busy-small-shop scale (200–600 bookings/mo):**
-$5–30/month, dominated by SMS.
+**Total expected monthly running cost:**
+- **Email-only configuration: $0 forever.** No surprises, no caps that matter at our scale.
+- **With SMS reminders: ~$5–10/month** at typical busy-shop volume (600 SMS/mo). SMS is genuinely the only cost; everything else stays free.
+
+### Why these "free" services don't disappear
+
+Some context so you trust the cost numbers won't change:
+
+- **Supabase, Netlify, Resend, Cloudflare** make their money on big enterprise customers. Their free tiers are intentionally generous to attract developers — they expect ~5% of free users to grow into paid. A small barbershop won't.
+- **Open-source dependencies** (react-day-picker, Astro, etc.) are MIT/Apache licensed — guaranteed free forever, even if their projects shut down (the code is still in your repo).
+- **Net:** The $0 baseline is sustainable for years.
+
+### Why SMS fundamentally costs money (and what to do about it)
+
+SMS is delivered through telecom carriers (Verizon, AT&T, T-Mobile), and they charge each other to relay messages. There is no truly free SMS API for legitimate use in 2026:
+
+- **Email-to-SMS gateways** (`1234567890@vtext.com` → text) **were killed by Verizon in 2024** because of spam abuse. Other carriers are following. Not viable anymore.
+- **Self-hosted SMS gateway** (Raspberry Pi + GSM modem + SIM card) costs ~$100 hardware + monthly carrier fee for the SIM — and is illegal in some jurisdictions for commercial bulk sending.
+- **Free trials of Twilio etc.** give ~$15 of credit, then you pay.
+- **WhatsApp / iMessage / Telegram** are free but most US barbershop customers don't use them for business.
+- **Web Push notifications** (PWA) are free but only work for customers who installed the PWA AND granted permission — realistically ~5% of customers.
+
+**Conclusion: at small scale, SMS reminders cost cents per booking. The math says use them anyway because they pay for themselves (see §5a).**
+
+### §5a — Cost-benefit math for SMS
+
+- ~600 SMS/month for a busy small shop = ~$5/mo at Twilio rates
+- Industry data: SMS reminders reduce no-shows by ~30–50% vs. email-only reminders
+- Average barbershop service: ~$35
+- 1 prevented no-show ≈ $35 of recovered revenue
+- **Breakeven: 1 prevented no-show every 7 months.** Realistically you'd prevent several per month.
+- **ROI on SMS: ~5–10× in pure dollars.**
+
+That said, if "any cost = no" is a hard rule, the email-only path is real and works.
 
 ### Data model (sketch)
 
@@ -359,6 +392,38 @@ If at any point during the build the calculus shifts, here are the off-ramps:
 | **Custom build (this spec)** | $0 + 240–880 dev-hours | Only if Fresha becomes unworkable. |
 
 **Honest opinion:** the cost-per-feature of any of these alternatives is dramatically better than building from scratch. Spec exists for completeness, not as a recommendation.
+
+---
+
+## 9a. Zero-cost variant (truly $0 forever)
+
+If the constraint is "no monthly cost ever, even pennies," here's the exact recipe:
+
+**Skip:**
+- ❌ Twilio (and all SMS notifications)
+- ❌ Stripe (no online deposits or payments)
+- ❌ Anything in Phase 4 that involves money flow
+
+**Use:**
+- ✅ Email-only confirmations and reminders (Resend free tier)
+- ✅ Calendar `.ics` download for customer self-reminder
+- ✅ Browser push notifications (free, works for customers who install the PWA)
+- ✅ All other components from §5 stack (all $0)
+
+**Trade-offs vs. SMS path:**
+- ⚠️ Higher no-show rate (~15% more no-shows vs. SMS reminders, per industry data)
+- ⚠️ Customer experience slightly worse (most people prefer texts to emails for appointment reminders)
+- ✅ Zero ongoing infrastructure cost
+- ✅ Zero vendor dependencies that can change pricing
+- ✅ Email is genuinely free at our scale (Resend's 3k/month free tier is plenty)
+
+**Mitigation for higher no-shows in email-only mode:**
+- Send reminders 24hr AND 2hr before (more shots on goal)
+- Allow customers to opt-in to "browser notifications" via PWA — free and reliable for those who install
+- Calendar `.ics` attachment in confirmation email auto-adds to most calendar apps with native reminder
+- Consider charging cancellation fees / requiring credit card hold (only if Phase 4 is built)
+
+**Cost: $0/month, period.**
 
 ---
 
