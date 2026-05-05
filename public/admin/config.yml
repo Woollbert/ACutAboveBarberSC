@@ -1,0 +1,149 @@
+# Decap CMS configuration for A Cut Above Barber Shop.
+# Edit content via https://acutabovebarbersc.com/admin/ once auth is wired up.
+#
+# AUTH SETUP — one-time, after pushing to GitHub + signing up for Decap Bridge:
+#   1. Push this repo to GitHub (private repo recommended).
+#   2. Sign up at https://decapbridge.com (free), connect your GitHub repo.
+#   3. Replace the `repo:` line below with your actual GitHub user/repo.
+#   4. Decap Bridge handles the OAuth handoff — no Netlify Identity needed.
+#   5. Visit /admin/ and click "Login with GitHub".
+#
+# Until those steps are done, the admin UI loads but login won't succeed.
+
+backend:
+  name: github
+  repo: GITHUB_USER/REPO_NAME       # ← replace once GitHub repo exists
+  branch: main
+  base_url: https://decapbridge.com
+  auth_endpoint: /auth
+
+# Where uploaded media (barber photos, shop interior) get saved in the repo.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+site_url: https://acutabovebarbersc.com
+display_url: https://acutabovebarbersc.com
+logo_url: https://acutabovebarbersc.com/favicon.svg
+
+# Show a compact preview of recent commits / publishing state.
+publish_mode: simple
+
+collections:
+  # ─────────────────────────────────────────────────────────────
+  # SHOP INFO — phone, address, hours, online booking link
+  # ─────────────────────────────────────────────────────────────
+  - name: "site"
+    label: "Shop Info"
+    description: "Phone numbers, address, hours, online booking link, social media."
+    files:
+      - file: "src/data/site.json"
+        label: "Shop Info"
+        name: "site"
+        editor: { preview: false }
+        fields:
+          - { label: "Business name",            name: "name",            widget: "string" }
+          - { label: "Short name",               name: "shortName",       widget: "string" }
+          - { label: "Tagline",                  name: "tagline",         widget: "string" }
+          - { label: "Website URL",              name: "url",             widget: "string" }
+          - { label: "Call number (display)",    name: "phone",           widget: "string", hint: "Format: 760-576-7856" }
+          - { label: "Text-to-book number",      name: "smsNumber",       widget: "string", hint: "Used for the Text to Book buttons. Same as call number is fine." }
+          - { label: "Email (optional)",         name: "email",           widget: "string", required: false }
+          - { label: "Online booking URL",       name: "bookingUrl",      widget: "string", required: false, hint: "Paste your Fresha booking link here. Leave blank to hide all 'Book Online' buttons." }
+          - { label: "Booking provider name",    name: "bookingProvider", widget: "string", default: "Fresha" }
+          - label: "Address"
+            name: "address"
+            widget: "object"
+            fields:
+              - { label: "Street",       name: "street",  widget: "string" }
+              - { label: "City",         name: "city",    widget: "string" }
+              - { label: "State",        name: "region",  widget: "string" }
+              - { label: "Zip",          name: "postal",  widget: "string" }
+              - { label: "Country code", name: "country", widget: "string", default: "US" }
+          - label: "Hours"
+            name: "hours"
+            widget: "list"
+            summary: "{{fields.day}}: {{fields.time}}"
+            fields:
+              - { label: "Day(s)", name: "day",  widget: "string", hint: "e.g. 'Sunday' or 'Thu - Sat'" }
+              - { label: "Hours",  name: "time", widget: "string", hint: "e.g. '8:00 AM - 9:00 PM' or 'Closed'" }
+          - label: "Map coordinates"
+            name: "geo"
+            widget: "object"
+            fields:
+              - { label: "Latitude",  name: "lat", widget: "number", value_type: "float", step: 0.0001 }
+              - { label: "Longitude", name: "lng", widget: "number", value_type: "float", step: 0.0001 }
+          - label: "Social links (optional)"
+            name: "social"
+            widget: "object"
+            fields:
+              - { label: "Instagram URL",      name: "instagram", widget: "string", required: false }
+              - { label: "Facebook URL",       name: "facebook",  widget: "string", required: false }
+              - { label: "Google profile URL", name: "google",    widget: "string", required: false }
+
+  # ─────────────────────────────────────────────────────────────
+  # SERVICES & PRICING
+  # ─────────────────────────────────────────────────────────────
+  - name: "services"
+    label: "Services & Pricing"
+    description: "Service menu, prices, add-ons, and the 'included with every visit' list."
+    files:
+      - file: "src/data/services.json"
+        label: "Services & Pricing"
+        name: "services"
+        editor: { preview: false }
+        fields:
+          - { label: "Pricing is placeholder?", name: "pricingIsPlaceholder", widget: "boolean", default: false, hint: "Leave OFF when prices are real. ON shows a 'starting points' disclaimer on the Services page." }
+          - label: "Services"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — from {{fields.priceFrom}}"
+            fields:
+              - { label: "Name",            name: "name",        widget: "string" }
+              - { label: "Starting price",  name: "priceFrom",   widget: "string", required: false, hint: "e.g. '$35'. Leave blank to hide the price badge." }
+              - { label: "Price note",      name: "priceNote",   widget: "string", required: false, hint: "Optional small line under the price, e.g. 'varies by length'." }
+              - { label: "Description",     name: "description", widget: "text" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                required: false
+                hint: "Small gold tags shown on the card."
+                field: { label: "Feature", name: "feature", widget: "string" }
+              - label: "Add-ons"
+                name: "addOns"
+                widget: "list"
+                required: false
+                hint: "Small bottom row, e.g. '+$5 straight razor shave'."
+                field: { label: "Add-on", name: "addOn", widget: "string" }
+          - label: "Included with every visit"
+            name: "extras"
+            widget: "list"
+            field: { label: "Extra", name: "extra", widget: "string" }
+
+  # ─────────────────────────────────────────────────────────────
+  # MEET THE BARBERS
+  # ─────────────────────────────────────────────────────────────
+  - name: "barbers"
+    label: "Meet the Barbers"
+    description: "Owner, co-owner, and barber bios, taglines, specialties, and photos."
+    files:
+      - file: "src/data/barbers.json"
+        label: "Meet the Barbers"
+        name: "barbers"
+        editor: { preview: false }
+        fields:
+          - label: "Barbers"
+            name: "barbers"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "URL slug",    name: "slug",     widget: "string", hint: "Lowercase, hyphens only. e.g. 'kristy-rogers'." }
+              - { label: "Name",        name: "name",     widget: "string" }
+              - { label: "Role",        name: "role",     widget: "select", options: ["Owner", "Co-Owner", "Barber"] }
+              - { label: "Years",       name: "years",    widget: "string", hint: "e.g. '12+ years' or '2.5 years'." }
+              - { label: "Tagline",     name: "tagline",  widget: "string" }
+              - { label: "Bio",         name: "bio",      widget: "text" }
+              - label: "Specialties"
+                name: "specialties"
+                widget: "list"
+                field: { label: "Specialty", name: "specialty", widget: "string" }
+              - { label: "Photo",       name: "photo",    widget: "image", required: false, hint: "Upload a square photo (~600×600px). Leave blank to use the monogram placeholder." }

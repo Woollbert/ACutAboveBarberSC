@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site, fullAddress, mapsHref } from '../data/site';
+---
+<BaseLayout
+  title="Visit & Book"
+  description="Visit A Cut Above Barber Shop at 1006 S. El Camino Real, Suite A, San Clemente, CA 92672. Call or text 949-369-1584 to book. Walk-ins welcome."
+>
+  <PageHeader
+    eyebrow="Visit & book"
+    title="Come on by, or just call."
+    subtitle="The fastest way to book is to call or text us. Walk-ins are welcome, and same-day appointments are often available."
+  />
+
+  <section class="section">
+    <div class="container-wide grid lg:grid-cols-12 gap-10">
+      <!-- Booking options -->
+      <div class="lg:col-span-5 space-y-4">
+        <a
+          href={`tel:${site.phoneTel}`}
+          class="card p-6 flex items-start gap-4 group"
+        >
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full shrink-0" style="background: var(--color-gold-soft); color: var(--color-gold-deep);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <div>
+            <p class="eyebrow">Call to book</p>
+            <p class="mt-1 text-2xl font-semibold" style="font-family: var(--font-display);">{site.phone}</p>
+            <p class="text-sm mt-1" style="color: var(--color-mute);">Tap to call from mobile.</p>
+          </div>
+        </a>
+
+        <a
+          href={site.smsHref}
+          class="card p-6 flex items-start gap-4 group"
+        >
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full shrink-0" style="background: var(--color-gold-soft); color: var(--color-gold-deep);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
+          <div>
+            <p class="eyebrow">Text to book</p>
+            <p class="mt-1 text-2xl font-semibold" style="font-family: var(--font-display);">{site.smsNumber}</p>
+            <p class="text-sm mt-1" style="color: var(--color-mute);">Send a photo of the cut you want and we'll confirm.</p>
+          </div>
+        </a>
+
+        {site.bookingUrl && (
+          <a
+            href={site.bookingUrl}
+            target="_blank"
+            rel="noopener"
+            class="card p-6 flex items-start gap-4 group"
+          >
+            <span class="inline-flex items-center justify-center w-12 h-12 rounded-full shrink-0" style="background: var(--color-gold-soft); color: var(--color-gold-deep);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </span>
+            <div>
+              <p class="eyebrow">Book online</p>
+              <p class="mt-1 text-2xl font-semibold" style="font-family: var(--font-display);">Book on {site.bookingProvider}</p>
+              <p class="text-sm mt-1" style="color: var(--color-mute);">See live availability and lock in your slot 24/7.</p>
+            </div>
+          </a>
+        )}
+
+        <a
+          href={mapsHref}
+          target="_blank"
+          rel="noopener"
+          class="card p-6 flex items-start gap-4 group"
+        >
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-full shrink-0" style="background: var(--color-gold-soft); color: var(--color-gold-deep);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <p class="eyebrow">Drive over</p>
+            <p class="mt-1 text-base font-semibold leading-tight">
+              {site.address.street}<br/>
+              {site.address.city}, {site.address.region} {site.address.postal}
+            </p>
+            <p class="text-sm mt-1" style="color: var(--color-mute);">Tap to open in Google Maps. Walk-ins welcome.</p>
+          </div>
+        </a>
+
+        <div class="card p-6">
+          <p class="eyebrow">Hours</p>
+          <ul class="mt-3 space-y-1.5">
+            {site.hours.map(h => (
+              <li class="flex justify-between text-sm">
+                <span class="font-medium">{h.day}</span>
+                <span style="color: var(--color-mute);">{h.time}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-4 text-xs" style="color: var(--color-mute);">
+            Hours can vary by barber. Call ahead to confirm with your preferred chair.
+          </p>
+        </div>
+      </div>
+
+      <!-- Map + extras -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        <div class="rounded-2xl overflow-hidden border" style="border-color: var(--color-line); box-shadow: var(--shadow-soft);">
+          <iframe
+            title="Map to A Cut Above Barber Shop"
+            src={`https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`}
+            width="100%"
+            height="460"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            style="border:0; display:block;"
+          ></iframe>
+        </div>
+
+        <div class="card p-7">
+          <p class="eyebrow">Good to know</p>
+          <ul class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm" style="color: var(--color-ink-soft);">
+            <li class="flex gap-2"><span style="color: var(--color-gold-deep)">◆</span> Veteran-owned, military-friendly</li>
+            <li class="flex gap-2"><span style="color: var(--color-gold-deep)">◆</span> Walk-ins welcome</li>
+            <li class="flex gap-2"><span style="color: var(--color-gold-deep)">◆</span> On-site ATM</li>
+            <li class="flex gap-2"><span style="color: var(--color-gold-deep)">◆</span> Complimentary shampoo</li>
+            <li class="flex gap-2"><span style="color: var(--color-gold-deep)">◆</span> Complimentary drinks</li>
+            <li class="flex gap-2"><span style="color: var(--color-gold-deep)">◆</span> Cuts for men, women & kids</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

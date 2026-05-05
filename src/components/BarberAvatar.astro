@@ -1,0 +1,39 @@
+---
+interface Props {
+  name: string;
+  photo?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+const { name, photo, size = 'md' } = Astro.props;
+
+const dims = { sm: 56, md: 96, lg: 160 }[size];
+
+const initials = name
+  .split(' ')
+  .map(part => part[0])
+  .filter(Boolean)
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
+---
+{photo ? (
+  <img
+    src={photo}
+    alt={`Portrait of ${name}`}
+    width={dims}
+    height={dims}
+    loading="lazy"
+    decoding="async"
+    class="rounded-full object-cover"
+    style={`width:${dims}px;height:${dims}px;border:2px solid var(--color-gold-soft);`}
+  />
+) : (
+  <div
+    role="img"
+    aria-label={`${name} portrait placeholder`}
+    class="rounded-full inline-flex items-center justify-center select-none"
+    style={`width:${dims}px;height:${dims}px;background: linear-gradient(135deg, var(--color-ink) 0%, var(--color-ink-soft) 100%); color: var(--color-gold); border: 2px solid var(--color-gold-soft); font-family: var(--font-display); font-weight: 600; font-size: ${Math.round(dims * 0.36)}px; letter-spacing: 0.04em;`}
+  >
+    {initials}
+  </div>
+)}

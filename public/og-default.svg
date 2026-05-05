@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#16110b"/>
+      <stop offset="100%" stop-color="#1f1810"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- gold corner frame, like the business card -->
+  <g fill="none" stroke="#c9a23a" stroke-width="2">
+    <path d="M40 100 L40 40 L100 40"/>
+    <path d="M1100 40 L1160 40 L1160 100"/>
+    <path d="M1160 530 L1160 590 L1100 590"/>
+    <path d="M100 590 L40 590 L40 530"/>
+  </g>
+
+  <!-- monogram badge -->
+  <g transform="translate(120,200)">
+    <rect width="160" height="160" rx="14" fill="#16110b" stroke="#c9a23a" stroke-width="3"/>
+    <rect x="10" y="10" width="140" height="140" rx="9" fill="none" stroke="#c9a23a" stroke-width="1.5"/>
+    <text x="80" y="105" text-anchor="middle"
+          font-family="'Playfair Display', Georgia, serif"
+          font-weight="700" font-size="58" fill="#c9a23a" letter-spacing="2">ACA</text>
+  </g>
+
+  <!-- text -->
+  <g transform="translate(330,210)" fill="#f7f3ec" font-family="'Playfair Display', Georgia, serif">
+    <text x="0" y="0" font-size="22" letter-spacing="6" fill="#c9a23a">A CUT ABOVE</text>
+    <text x="0" y="80" font-size="68" font-weight="600">Precision cuts.</text>
+    <text x="0" y="155" font-size="68" font-weight="600">Straight razor shaves.</text>
+    <text x="0" y="230" font-size="68" font-weight="600" fill="#c9a23a">Clean fades done right.</text>
+  </g>
+
+  <g transform="translate(120,540)" fill="#f7f3ec" font-family="'Inter', system-ui, sans-serif">
+    <text x="0" y="0" font-size="22">San Clemente, CA  •  949-369-1584  •  acutabovebarbersc.com</text>
+  </g>
+</svg>

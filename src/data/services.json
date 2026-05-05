@@ -1,0 +1,76 @@
+{
+  "pricingIsPlaceholder": false,
+  "items": [
+    {
+      "name": "Military Fades",
+      "priceFrom": "$18",
+      "description": "Sharp, regulation-ready fades for active-duty service members from every branch, and for veterans. Done right, done fast.",
+      "features": ["High & tight", "Recon", "Inspection-ready lineup"],
+      "addOns": ["+$5 straight razor shave", "+$2 top cut"]
+    },
+    {
+      "name": "Gentleman's Cuts",
+      "priceFrom": "$35",
+      "description": "Short modern men's cuts and gentleman's classics, tailored to your face shape and lifestyle.",
+      "features": ["Scissor cuts", "Modern styles", "Hot-towel finish"]
+    },
+    {
+      "name": "Women's & Long Haircuts",
+      "priceFrom": "$45",
+      "description": "Precision cuts and shaping for women's styles and longer hair, with the same attention to detail as our barber work.",
+      "features": ["Shears & dry cutting", "Layering & shaping", "Style consult"]
+    },
+    {
+      "name": "Beard Trims & Lineups",
+      "priceFrom": "$20",
+      "description": "Detailed beard sculpting and crisp razor lineups for a clean, defined finish that holds for weeks.",
+      "features": ["Beard shaping", "Neck & cheek lines", "Razor-sharp lineup"]
+    },
+    {
+      "name": "Straight Razor Face Shaves",
+      "priceFrom": "$50",
+      "description": "Hot-towel straight razor shaves done the traditional way. Smooth, refreshed, refined.",
+      "features": ["Hot towel", "Traditional straight razor", "Smooth finish"],
+      "addOns": ["+$5 facial mask", "+$5 facial cleansing", "+$5 other facial add-ons"]
+    },
+    {
+      "name": "Hair Color (Men)",
+      "priceFrom": "$25",
+      "priceNote": "varies by length",
+      "description": "Refresh, blend gray, or add depth. Pricing depends on hair length and coverage.",
+      "features": ["Touch-ups", "Gray blending", "All-over color"]
+    },
+    {
+      "name": "Hair Color (Women)",
+      "priceFrom": "$50",
+      "priceNote": "varies by length",
+      "description": "All-over color, gray blending, and custom shades for women's hair. Final price depends on length.",
+      "features": ["All-over color", "Gray blending", "Custom shades"]
+    },
+    {
+      "name": "Highlights",
+      "priceFrom": "$80",
+      "priceNote": "by coverage",
+      "description": "Highlighting services priced by how much of the head you want highlighted.",
+      "features": ["Partial highlights", "Full highlights", "Face-framing"]
+    },
+    {
+      "name": "Balayage",
+      "priceFrom": "$250",
+      "description": "Hand-painted color for a soft, natural-looking dimension. A premium service for premium results.",
+      "features": ["Hand-painted", "Lived-in look", "Low maintenance"]
+    },
+    {
+      "name": "Custom Designs",
+      "priceFrom": "",
+      "description": "Freehand designs and detailed enhancements for clients who want something a step above. Pricing varies by complexity. Call for a quote.",
+      "features": ["Freehand line work", "Enhancement detail", "Personalized requests"]
+    }
+  ],
+  "extras": [
+    "Complimentary shampoo with every service",
+    "Complimentary drinks while you relax",
+    "Cash preferred. On-site ATM and card options accepted",
+    "Walk-ins welcome, appointments preferred"
+  ]
+}
