@@ -1,0 +1,15 @@
+# Netlify build settings for acutabovebarbersc.com
+# Used when Netlify deploys from this Git repo (vs. CLI uploads).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Decap CMS lives at /admin/. Don't index it in search engines.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
