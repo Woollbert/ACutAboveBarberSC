@@ -29,10 +29,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? site.url);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#16110b" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <!-- Adaptive favicons: cream-bg variant for light browser themes, ink-bg variant for dark themes. -->
+    <link rel="icon" type="image/png" sizes="16x16"   href="/favicon-16-light.png"  media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" sizes="32x32"   href="/favicon-32-light.png"  media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" sizes="48x48"   href="/favicon-48-light.png"  media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192-light.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" sizes="16x16"   href="/favicon-16-dark.png"   media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="32x32"   href="/favicon-32-dark.png"   media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="48x48"   href="/favicon-48-dark.png"   media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192-dark.png"  media="(prefers-color-scheme: dark)" />
+    <!-- Fallback for older browsers that ignore the media query -->
+    <link rel="icon" type="image/png" sizes="32x32"   href="/favicon-32-dark.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonicalURL} />
 

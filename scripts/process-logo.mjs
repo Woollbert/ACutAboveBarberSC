@@ -38,15 +38,48 @@ for (const { name, size } of [{ name: 'logo-256-light.png', size: 256 }, { name:
   console.log(`✓ public/${name} (${(out.length / 1024).toFixed(1)} KB)`);
 }
 
-// 2. Favicons — real logo on cream background, sized for browser tabs.
-//    Cream bg matches the site palette and gives the dark logo strokes high contrast.
+// 2. Favicons — generate LIGHT and DARK theme variants so the favicon stays
+//    visible on any browser chrome color. Browsers pick via prefers-color-scheme.
+//
+//    LIGHT theme  → dark logo on cream background     (high contrast on light tabs)
+//    DARK theme   → white logo on ink/black background (high contrast on dark tabs)
+
+// Pre-build inverted (white) logo with transparent background.
+const trimmedInvertedTransparent = await sharp(trimmed)
+  .ensureAlpha()
+  .negate({ alpha: false })
+  .toBuffer();
+
 for (const size of [16, 32, 48, 192]) {
-  const fav = await sharp(trimmed)
-    .resize({ width: size, height: size, fit: 'contain', background: { r: 247, g: 243, b: 236, alpha: 1 } })
+  const innerSize = Math.round(size * 0.86); // slight inset so the logo doesn't touch the edges
+
+  // === Light variant: dark logo composited onto cream canvas ===
+  const darkLogo = await sharp(trimmed)
+    .resize({ width: innerSize, height: innerSize, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .png()
     .toBuffer();
-  await fs.writeFile(`public/favicon-${size}.png`, fav);
-  console.log(`✓ public/favicon-${size}.png (${(fav.length / 1024).toFixed(1)} KB)`);
+  const light = await sharp({
+    create: { width: size, height: size, channels: 4, background: { r: 247, g: 243, b: 236, alpha: 1 } }
+  })
+    .composite([{ input: darkLogo, gravity: 'center' }])
+    .png()
+    .toBuffer();
+  await fs.writeFile(`public/favicon-${size}-light.png`, light);
+  console.log(`✓ public/favicon-${size}-light.png (${(light.length / 1024).toFixed(1)} KB)`);
+
+  // === Dark variant: white logo composited onto ink canvas ===
+  const lightLogo = await sharp(trimmedInvertedTransparent)
+    .resize({ width: innerSize, height: innerSize, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toBuffer();
+  const dark = await sharp({
+    create: { width: size, height: size, channels: 4, background: { r: 22, g: 17, b: 11, alpha: 1 } }
+  })
+    .composite([{ input: lightLogo, gravity: 'center' }])
+    .png()
+    .toBuffer();
+  await fs.writeFile(`public/favicon-${size}-dark.png`, dark);
+  console.log(`✓ public/favicon-${size}-dark.png (${(dark.length / 1024).toFixed(1)} KB)`);
 }
 
 // 3. Apple touch icon (180x180 standard)
