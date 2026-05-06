@@ -177,6 +177,28 @@ collections:
                   - { label: "Caption", name: "caption", widget: "string", required: false, hint: "Short description, e.g. 'Skin fade with razor lineup'." }
 
   # ─────────────────────────────────────────────────────────────
+  # SHOP GALLERY — photos shown on /gallery/ page.
+  # ─────────────────────────────────────────────────────────────
+  - name: "gallery"
+    label: "Shop Gallery"
+    description: "Add, remove, reorder, and caption photos shown on the public Gallery page."
+    files:
+      - file: "src/data/gallery.json"
+        label: "Shop Gallery"
+        name: "gallery"
+        editor: { preview: false }
+        fields:
+          - label: "Gallery photos"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.caption}}"
+            hint: "Drag to reorder. Each photo shows on the public /gallery/ page. Tag with a barber to also link it to that barber's page later."
+            fields:
+              - { label: "Photo",   name: "image",   widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string", required: false, hint: "Short description, e.g. 'Skin fade with razor lineup'." }
+              - { label: "Done by (optional)", name: "barber", widget: "select", required: false, options: ["", "kristy-rogers", "deandre-james", "heather-bravo", "mario-gonzalez", "rafa"], hint: "Which barber did this cut. Used for filtering later." }
+
+  # ─────────────────────────────────────────────────────────────
   # PAGE COPY — every visible piece of marketing/body text on each page.
   # Use this to edit headlines, subtitles, intros, feature card copy, etc.
   # ─────────────────────────────────────────────────────────────
