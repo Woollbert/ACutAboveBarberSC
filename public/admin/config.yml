@@ -57,7 +57,7 @@ collections:
           - { label: "Website URL",              name: "url",             widget: "string" }
           - { label: "Call number (display)",    name: "phone",           widget: "string", hint: "Format: 760-576-7856" }
           - { label: "Text-to-book number",      name: "smsNumber",       widget: "string", hint: "Used for the Text to Book buttons. Same as call number is fine." }
-          - { label: "Email (optional)",         name: "email",           widget: "string", required: false }
+          - { label: "Email",                    name: "email",           widget: "string", required: false }
           - { label: "Online booking URL",       name: "bookingUrl",      widget: "string", required: false, hint: "Paste your Fresha booking link here. Leave blank to hide all 'Book Online' buttons." }
           - { label: "Booking provider name",    name: "bookingProvider", widget: "string", default: "Fresha" }
           - label: "Address"
@@ -82,7 +82,7 @@ collections:
             fields:
               - { label: "Latitude",  name: "lat", widget: "number", value_type: "float", step: 0.0001 }
               - { label: "Longitude", name: "lng", widget: "number", value_type: "float", step: 0.0001 }
-          - label: "Shop social links (optional)"
+          - label: "Shop social links"
             name: "social"
             widget: "object"
             fields:
@@ -158,7 +158,7 @@ collections:
                 widget: "list"
                 field: { label: "Specialty", name: "specialty", widget: "string" }
               - { label: "Headshot photo", name: "photo", widget: "image", required: false, hint: "Upload a square photo (~600×600px). Leave blank to use the monogram placeholder." }
-              - label: "Social links (optional)"
+              - label: "Social links"
                 name: "social"
                 widget: "object"
                 hint: "This barber's personal social accounts. Leave any field blank to hide that icon."
@@ -196,7 +196,7 @@ collections:
             fields:
               - { label: "Photo",   name: "image",   widget: "image" }
               - { label: "Caption", name: "caption", widget: "string", required: false, hint: "Short description, e.g. 'Skin fade with razor lineup'." }
-              - { label: "Done by (optional)", name: "barber", widget: "select", required: false, options: ["", "kristy-rogers", "deandre-james", "heather-bravo", "mario-gonzalez", "rafa"], hint: "Which barber did this cut. Used for filtering later." }
+              - { label: "Done by", name: "barber", widget: "select", required: false, options: ["", "kristy-rogers", "deandre-james", "heather-bravo", "mario-gonzalez", "rafa"], hint: "Which barber did this cut. Used for filtering later." }
 
   # ─────────────────────────────────────────────────────────────
   # PAGE COPY — every visible piece of marketing/body text on each page.
