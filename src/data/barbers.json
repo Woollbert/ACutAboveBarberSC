@@ -1,108 +1,108 @@
 {
   "barbers": [
     {
-      "slug": "kristy-rogers",
+      "bio": "With over 30 years in the barber industry, Kristy leads A Cut Above Barber Shop with experience and dedication. A military veteran and proud member of the San Clemente community, she takes special pride in clean, precise cuts for service members from every branch. Her focus is on delivering consistent, high-quality results in a clean, modern, and welcoming environment where every client leaves feeling refreshed and confident.",
+      "portfolio": [],
       "name": "Kristy Rogers",
+      "slug": "kristy-rogers",
+      "social": {
+        "instagram": "https://www.instagram.com/barberdoll_slays",
+        "tiktok": "",
+        "facebook": ""
+      },
+      "tagline": "30 years of precision, care, and consistently clean results.",
+      "photo": "",
       "role": "Owner",
       "years": "30+ years",
-      "tagline": "30 years of precision, care, and consistently clean results.",
-      "bio": "With over 30 years in the barber industry, Kristy leads A Cut Above Barber Shop with experience and dedication. A military veteran and proud member of the San Clemente community, she takes special pride in clean, precise cuts for service members from every branch. Her focus is on delivering consistent, high-quality results in a clean, modern, and welcoming environment where every client leaves feeling refreshed and confident.",
       "specialties": [
         "Straight razor fades",
         "Lineups & designs",
         "Gentleman's cuts",
         "Women's haircuts",
         "Color & highlights"
-      ],
-      "photo": "",
+      ]
+    },
+    {
+      "bio": "DeAndre brings over 12 years of barbering experience and is known for his attention to detail and creativity. His work blends precision with style, making him a great choice for clients looking for both classic and custom looks.",
+      "portfolio": [],
+      "name": "DeAndre James",
+      "slug": "deandre-james",
       "social": {
-        "instagram": "https://www.instagram.com/barberdoll_slays",
+        "instagram": "",
         "tiktok": "",
         "facebook": ""
       },
-      "portfolio": []
-    },
-    {
-      "slug": "deandre-james",
-      "name": "DeAndre James",
+      "tagline": "Where precision meets creativity.",
+      "photo": "",
       "role": "Co-Owner",
       "years": "12+ years",
-      "tagline": "Where precision meets creativity.",
-      "bio": "DeAndre brings over 12 years of barbering experience and is known for his attention to detail and creativity. His work blends precision with style, making him a great choice for clients looking for both classic and custom looks.",
       "specialties": [
         "Gentleman's cuts",
         "Clean fades",
         "Straight razor shaves",
         "Intricate designs",
         "Hair color & shear cutting"
-      ],
-      "photo": "",
+      ]
+    },
+    {
+      "bio": "With 12 years of experience, Heather is highly skilled in gentleman's cuts, military fades, and women's haircuts. She also offers hair color services, giving clients a well-rounded experience. Her consistency and versatility make her a trusted choice for clients of all styles.",
+      "portfolio": [],
+      "name": "Heather Bravo",
+      "slug": "heather-bravo",
       "social": {
         "instagram": "",
         "tiktok": "",
         "facebook": ""
       },
-      "portfolio": []
-    },
-    {
-      "slug": "heather-bravo",
-      "name": "Heather Bravo",
+      "tagline": "Reliable, versatile, and always on point.",
+      "photo": "",
       "role": "Barber",
       "years": "12+ years",
-      "tagline": "Reliable, versatile, and always on point.",
-      "bio": "With 12 years of experience, Heather is highly skilled in gentleman's cuts, military fades, and women's haircuts. She also offers hair color services, giving clients a well-rounded experience. Her consistency and versatility make her a trusted choice for clients of all styles.",
       "specialties": [
         "Gentleman's cuts",
         "Military fades",
         "Women's haircuts",
         "Hair color"
-      ],
-      "photo": "",
+      ]
+    },
+    {
+      "bio": "Mario is a talented barber with 2½ years of experience, quickly building a reputation for delivering clean, sharp fades. His attention to detail and dedication to his craft make him a strong choice for precise, modern styles.",
+      "portfolio": [],
+      "name": "Mario Gonzalez",
+      "slug": "mario-gonzalez",
       "social": {
         "instagram": "",
         "tiktok": "",
         "facebook": ""
       },
-      "portfolio": []
-    },
-    {
-      "slug": "mario-gonzalez",
-      "name": "Mario Gonzalez",
+      "tagline": "Clean fades, sharp details, rising talent!",
+      "photo": "",
       "role": "Barber",
       "years": "2.5 years",
-      "tagline": "Clean fades, sharp details, rising talent.",
-      "bio": "Mario is a talented barber with 2½ years of experience, quickly building a reputation for delivering clean, sharp fades. His attention to detail and dedication to his craft make him a strong choice for precise, modern styles.",
       "specialties": [
         "Military fades",
         "Straight razor shaves",
         "Gentleman's cuts"
-      ],
-      "photo": "",
+      ]
+    },
+    {
+      "bio": "Rafa has been barbering for 5 years and focuses on delivering clean, classic results. Clients appreciate his steady approach and ability to consistently deliver sharp, polished looks.",
+      "portfolio": [],
+      "name": "Rafa",
+      "slug": "rafa",
       "social": {
         "instagram": "",
         "tiktok": "",
         "facebook": ""
       },
-      "portfolio": []
-    },
-    {
-      "slug": "rafa",
-      "name": "Rafa",
+      "tagline": "Classic cuts done right, every time.",
+      "photo": "",
       "role": "Barber",
       "years": "5 years",
-      "tagline": "Classic cuts done right, every time.",
-      "bio": "Rafa has been barbering for 5 years and focuses on delivering clean, classic results. Clients appreciate his steady approach and ability to consistently deliver sharp, polished looks.",
       "specialties": [
         "Gentleman's cuts",
         "Straight razor fades"
-      ],
-      "photo": "",
-      "social": {
-        "instagram": "",
-        "tiktok": "",
-        "facebook": ""
-      },
-      "portfolio": []
+      ]
     }
   ]
 }
