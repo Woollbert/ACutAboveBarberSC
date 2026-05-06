@@ -5,30 +5,31 @@ interface Props {
 }
 const { variant = 'dark', size = 'md' } = Astro.props;
 
+// The logo image already contains the "A CUT ABOVE BARBERSHOP" wordmark
+// curved around the seal. No accompanying text needed.
 const sizes = {
-  sm: { box: 32, text: 'text-base' },
-  md: { box: 40, text: 'text-lg' },
-  lg: { box: 56, text: 'text-2xl' },
+  sm: 36,
+  md: 48,
+  lg: 72,
 };
-const s = sizes[size];
+const dim = sizes[size];
 
-const ink = variant === 'light' ? 'var(--color-cream)' : 'var(--color-ink)';
-const gold = 'var(--color-gold)';
+// Two PNG variants live in /public/. Light is white logo for dark backgrounds.
+const src = variant === 'light' ? '/logo-256-light.png' : '/logo-256.png';
 ---
-<a href="/" aria-label="A Cut Above Barber Shop, Home" class="inline-flex items-center gap-3 group">
-  <span
-    class="inline-flex items-center justify-center shrink-0 rounded-md"
-    style={`width:${s.box}px;height:${s.box}px;background:${ink};border:1.5px solid ${gold};box-shadow: inset 0 0 0 3px ${ink}, inset 0 0 0 4px ${gold};`}
-  >
-    <span
-      class="font-bold tracking-tight leading-none"
-      style={`color:${gold};font-family:var(--font-display);font-size:${Math.round(s.box*0.42)}px;`}
-    >
-      ACA
-    </span>
-  </span>
-  <span class={`leading-tight ${s.text}`} style={`color:${ink}`}>
-    <span class="block font-semibold tracking-wide" style="font-family:var(--font-display);">A Cut Above</span>
-    <span class="block uppercase tracking-[0.22em] text-[10px]" style={`color:${variant==='light' ? 'var(--color-gold-soft)' : 'var(--color-gold-deep)'}`}>Barber Shop</span>
-  </span>
+<a
+  href="/"
+  aria-label="A Cut Above Barber Shop — Home"
+  class="inline-flex items-center shrink-0 group"
+>
+  <img
+    src={src}
+    alt="A Cut Above Barber Shop"
+    width={dim}
+    height={dim}
+    decoding="async"
+    fetchpriority="high"
+    class="block transition-transform duration-300 group-hover:scale-105"
+    style={`width:${dim}px;height:${dim}px;`}
+  />
 </a>
