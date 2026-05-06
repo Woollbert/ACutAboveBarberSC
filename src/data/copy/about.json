@@ -1,0 +1,41 @@
+{
+  "metaDescription": "A Cut Above Barber Shop is a veteran-owned barber shop in San Clemente, led by Kristy Rogers with 30+ years of experience and co-owned with master barber DeAndre James.",
+  "header": {
+    "eyebrow": "About the shop",
+    "title": "Three decades of craft, in a shop built for you.",
+    "subtitle": "A Cut Above Barber Shop is a clean, modern, welcoming space where every client gets attention to detail and walks out renewed and confident."
+  },
+  "ownerCard": {
+    "eyebrow": "From the owner",
+    "name": "Kristy Rogers",
+    "subtitle": "Owner • 30+ years experience",
+    "bullets": [
+      "Military veteran",
+      "Surviving spouse of an active-duty service member",
+      "All military branches welcome",
+      "Specialist in straight razor fades, lineups, designs, gentleman's & women's cuts, color & highlights"
+    ]
+  },
+  "ownerStory": {
+    "openingQuote": "Hi, I'm Kristy Rogers, owner of A Cut Above Barber Shop.",
+    "paragraph1": "I've been in the barber industry for over 30 years, proudly serving the San Clemente community. I'm also a military veteran and a surviving spouse of an active-duty service member — and I take pride in providing clean, precise cuts for service members from every branch.",
+    "paragraph2": "My specialties include straight razor fades, lineups, designs, gentleman's cuts, women's haircuts, and color services including highlights.",
+    "paragraph3": "At A Cut Above Barber Shop, my goal is to create a fresh, modern, and welcoming space where every client can relax, feel taken care of, and leave renewed and confident."
+  },
+  "coOwner": {
+    "heading": "Co-owned with DeAndre James",
+    "paragraph1": "A Cut Above is co-owned by master barber **DeAndre James**. With 12+ years of experience and a reputation for precision and creativity, DeAndre helps lead the shop alongside Kristy, bringing his own specialty in clean fades, straight razor shaves, intricate designs, hair color, and shear cutting.",
+    "paragraph2": "Together, the ownership team sets the standard the rest of the chairs follow: consistency, craft, and care — every cut, every visit."
+  },
+  "whatMakesUsDifferent": {
+    "eyebrow": "What makes us different",
+    "heading": "Experience, precision, and atmosphere, in that order.",
+    "cards": [
+      { "title": "Experience", "body": "Three decades in the chair. Consistent, high-quality results from a team that has seen it all." },
+      { "title": "Precision", "body": "Every fade, lineup, and razor edge is hand-finished. We don't cut corners. We cut hair." },
+      { "title": "Atmosphere", "body": "A clean, modern shop where you can relax, refresh, and recharge, not a chair-shop conveyor belt." }
+    ]
+  },
+  "ctaHeading": "Come experience it for yourself.",
+  "ctaSubline": "Walk-ins welcome. Same-day appointments often available. Call or text to lock in your barber."
+}

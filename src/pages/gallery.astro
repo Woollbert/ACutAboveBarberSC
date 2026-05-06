@@ -3,15 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { gallery } from '../data/gallery';
+import { copy } from '../data/copy';
+
+const c = copy.galleryPage;
 ---
-<BaseLayout
-  title="Gallery"
-  description="Recent work from the barbers at A Cut Above Barber Shop in San Clemente. Skin fades, lineups, designs, military cuts, beard work, women's haircuts, and color."
->
+<BaseLayout title="Gallery" description={c.metaDescription}>
   <PageHeader
-    eyebrow="Recent work"
-    title="Cuts we're proud of."
-    subtitle="A look at the variety of work coming out of our chairs — military fades, custom designs, gentleman's cuts, and women's styles."
+    eyebrow={c.header.eyebrow}
+    title={c.header.title}
+    subtitle={c.header.subtitle}
   />
 
   <section class="section">
@@ -38,10 +38,10 @@ import { gallery } from '../data/gallery';
       </ul>
 
       <p class="mt-10 text-sm text-center max-w-2xl mx-auto" style="color: var(--color-mute);">
-        See a cut you like? Mention the photo when you call or text — we can match the look on you.
+        {c.footerNote}
       </p>
     </div>
   </section>
 
-  <CtaBand heading="See a style you like? Let's book it." />
+  <CtaBand heading={c.ctaHeading} />
 </BaseLayout>

@@ -1,21 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import { copy } from '../data/copy';
+
+const c = copy.global.notFound;
 ---
 <BaseLayout
   title="Page not found"
-  description="Sorry — that page isn't here. Head back to the home page or call us to book."
+  description={c.metaDescription}
   noStructuredData
 >
   <section class="section">
     <div class="container-narrow text-center">
-      <p class="eyebrow flex items-center justify-center gap-3"><span class="gold-rule"></span> 404 <span class="gold-rule"></span></p>
-      <h1 class="mt-4 text-5xl md:text-6xl font-semibold">That page got a fade.</h1>
+      <p class="eyebrow flex items-center justify-center gap-3"><span class="gold-rule"></span> {c.eyebrow} <span class="gold-rule"></span></p>
+      <h1 class="mt-4 text-5xl md:text-6xl font-semibold">{c.title}</h1>
       <p class="mt-5 text-lg" style="color: var(--color-mute);">
-        The page you're looking for isn't here. But your next great cut still is.
+        {c.subtitle}
       </p>
       <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="/" class="btn btn-primary">Back to home</a>
+        <a href="/" class="btn btn-primary">{c.homeButton}</a>
         <a href={`tel:${site.phoneTel}`} class="btn btn-gold">Call {site.phone}</a>
       </div>
     </div>

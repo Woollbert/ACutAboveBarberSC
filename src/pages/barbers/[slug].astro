@@ -5,6 +5,7 @@ import BarberAvatar from '../../components/BarberAvatar.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import { barbers } from '../../data/barbers';
 import { site } from '../../data/site';
+import { copy } from '../../data/copy';
 
 export async function getStaticPaths() {
   return barbers.map((b) => ({ params: { slug: b.slug }, props: { barber: b } }));
@@ -12,6 +13,10 @@ export async function getStaticPaths() {
 
 const { barber } = Astro.props;
 const firstName = barber.name.split(' ')[0];
+const c = copy.barbersPage.detail;
+
+// Replace {firstName} placeholder in copy strings.
+const fill = (s: string) => s.replace(/\{firstName\}/g, firstName);
 ---
 <BaseLayout
   title={`${barber.name} — ${barber.role}`}
@@ -22,7 +27,7 @@ const firstName = barber.name.split(' ')[0];
     <div class="container-narrow">
       <a href="/barbers/" class="eyebrow inline-flex items-center gap-2 hover:underline">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        All barbers
+        {c.backLink}
       </a>
 
       <div class="mt-6 grid md:grid-cols-12 gap-8 items-start">
@@ -43,11 +48,11 @@ const firstName = barber.name.split(' ')[0];
         </div>
 
         <div class="md:col-span-8">
-          <p class="eyebrow">About</p>
+          <p class="eyebrow">{c.aboutLabel}</p>
           <p class="mt-3 text-lg leading-relaxed" style="color: var(--color-ink-soft);">{barber.bio}</p>
 
           <div class="mt-6">
-            <p class="eyebrow">Specialties</p>
+            <p class="eyebrow">{c.specialtiesLabel}</p>
             <ul class="mt-3 flex flex-wrap gap-2">
               {barber.specialties.map((s) => (
                 <li class="text-xs uppercase tracking-wider px-3 py-1.5 rounded-full" style="background: var(--color-gold-soft); color: var(--color-gold-deep);">{s}</li>
@@ -72,8 +77,8 @@ const firstName = barber.name.split(' ')[0];
     <div class="container-wide">
       <div class="flex items-end justify-between flex-wrap gap-4">
         <div>
-          <p class="eyebrow flex items-center gap-3"><span class="gold-rule"></span> {firstName}'s portfolio</p>
-          <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Recent work.</h2>
+          <p class="eyebrow flex items-center gap-3"><span class="gold-rule"></span> {fill(c.portfolioEyebrow)}</p>
+          <h2 class="mt-3 text-3xl md:text-4xl font-semibold">{c.portfolioHeading}</h2>
         </div>
         {barber.portfolio && barber.portfolio.length > 0 && (
           <p class="text-sm" style="color: var(--color-mute);">{barber.portfolio.length} {barber.portfolio.length === 1 ? 'cut' : 'cuts'}</p>
@@ -101,14 +106,12 @@ const firstName = barber.name.split(' ')[0];
         </ul>
       ) : (
         <div class="mt-10 card p-10 text-center">
-          <p class="text-lg" style="color: var(--color-mute);">
-            {firstName}'s portfolio is coming soon. In the meantime, see the full shop gallery for examples of our work.
-          </p>
-          <a href="/gallery/" class="btn btn-outline mt-6">View shop gallery →</a>
+          <p class="text-lg" style="color: var(--color-mute);">{fill(c.emptyPortfolioMessage)}</p>
+          <a href="/gallery/" class="btn btn-outline mt-6">{c.emptyPortfolioCta}</a>
         </div>
       )}
     </div>
   </section>
 
-  <CtaBand heading={`Book your cut with ${firstName}.`} />
+  <CtaBand heading={fill(c.ctaHeading)} />
 </BaseLayout>

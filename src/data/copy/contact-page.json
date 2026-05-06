@@ -1,0 +1,39 @@
+{
+  "metaDescription": "Visit A Cut Above Barber Shop at 1006 S. El Camino Real, Suite A, San Clemente, CA 92672. Call or text to book. Walk-ins welcome.",
+  "header": {
+    "eyebrow": "Visit & book",
+    "title": "Come on by, or just call.",
+    "subtitle": "The fastest way to book is to call or text us. Walk-ins are welcome, and same-day appointments are often available."
+  },
+  "callCard": {
+    "eyebrow": "Call to book",
+    "subtitle": "Tap to call from mobile."
+  },
+  "textCard": {
+    "eyebrow": "Text to book",
+    "subtitle": "Send a photo of the cut you want and we'll confirm."
+  },
+  "bookOnlineCard": {
+    "eyebrow": "Book online",
+    "subtitle": "See live availability and lock in your slot 24/7."
+  },
+  "driveOverCard": {
+    "eyebrow": "Drive over",
+    "subtitle": "Tap to open in Google Maps. Walk-ins welcome."
+  },
+  "hoursCard": {
+    "eyebrow": "Hours",
+    "footnote": "Hours can vary by barber. Call ahead to confirm with your preferred chair."
+  },
+  "goodToKnow": {
+    "eyebrow": "Good to know",
+    "items": [
+      "Veteran-owned, military-friendly",
+      "Walk-ins welcome",
+      "On-site ATM",
+      "Complimentary shampoo",
+      "Complimentary drinks",
+      "Cuts for men, women & kids"
+    ]
+  }
+}

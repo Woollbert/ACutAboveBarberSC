@@ -1,0 +1,22 @@
+{
+  "metaDescription": "Full menu of barber and hair services at A Cut Above Barber Shop in San Clemente: military and regulation cuts, straight razor fades and lineups, beard trims and straight razor shaves, gentleman's cuts, women's haircuts, color and highlights, and custom designs.",
+  "header": {
+    "eyebrow": "Services & experience",
+    "title": "A full menu, finished with care.",
+    "subtitle": "A complete range of barber and hair services for men and women. Every visit includes attention to detail in a clean, comfortable environment."
+  },
+  "extrasSection": {
+    "eyebrow": "Included with every visit",
+    "heading": "Little touches. Big difference."
+  },
+  "howItWorks": {
+    "eyebrow": "How it works",
+    "heading": "Simple, friendly, no surprises.",
+    "steps": [
+      { "number": "01", "title": "Call or text", "body": "Reach us at the shop number. Tell us the service you want and your preferred barber." },
+      { "number": "02", "title": "Show up sharp", "body": "Walk in or stop by your scheduled time. Grab a complimentary drink and relax." },
+      { "number": "03", "title": "Leave refreshed", "body": "Sharp cut, hot-towel finish where it fits, and you're out the door confident." }
+    ]
+  },
+  "ctaHeading": "Pick your service. We'll handle the rest."
+}

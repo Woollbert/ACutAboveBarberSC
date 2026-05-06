@@ -2,18 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { barbers } from '../data/barbers';
+import { copy } from '../data/copy';
 
-const owners = barbers.filter(b => b.role === 'Owner' || b.role === 'Co-Owner');
+const c = copy.about;
+
+// Render simple **bold** markdown in copy strings.
+function renderBold(text: string): string {
+  return text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+}
 ---
-<BaseLayout
-  title="About"
-  description="A Cut Above Barber Shop is a veteran-owned barber shop in San Clemente, led by Kristy Rogers with 30+ years of experience and co-owned with master barber DeAndre James."
->
+<BaseLayout title="About" description={c.metaDescription}>
   <PageHeader
-    eyebrow="About the shop"
-    title="Three decades of craft, in a shop built for you."
-    subtitle="A Cut Above Barber Shop is a clean, modern, welcoming space where every client gets attention to detail and walks out renewed and confident."
+    eyebrow={c.header.eyebrow}
+    title={c.header.title}
+    subtitle={c.header.subtitle}
   />
 
   <!-- Owner story -->
@@ -21,50 +23,36 @@ const owners = barbers.filter(b => b.role === 'Owner' || b.role === 'Co-Owner');
     <div class="container-narrow grid lg:grid-cols-12 gap-10 items-start">
       <aside class="lg:col-span-4 lg:sticky lg:top-24 self-start">
         <div class="card p-6">
-          <p class="eyebrow">From the owner</p>
-          <h2 class="mt-3 text-2xl font-semibold" style="font-family: var(--font-display);">Kristy Rogers</h2>
-          <p class="text-sm mt-1" style="color: var(--color-mute);">Owner • 30+ years experience</p>
+          <p class="eyebrow">{c.ownerCard.eyebrow}</p>
+          <h2 class="mt-3 text-2xl font-semibold" style="font-family: var(--font-display);">{c.ownerCard.name}</h2>
+          <p class="text-sm mt-1" style="color: var(--color-mute);">{c.ownerCard.subtitle}</p>
           <ul class="mt-5 space-y-2 text-sm" style="color: var(--color-mute);">
-            <li class="flex gap-2"><span aria-hidden="true" style="color: var(--color-gold-deep)">★</span> Military veteran</li>
-            <li class="flex gap-2"><span aria-hidden="true" style="color: var(--color-gold-deep)">★</span> Surviving spouse of an active-duty service member</li>
-            <li class="flex gap-2"><span aria-hidden="true" style="color: var(--color-gold-deep)">★</span> All military branches welcome</li>
-            <li class="flex gap-2"><span aria-hidden="true" style="color: var(--color-gold-deep)">★</span> Specialist in straight razor fades, lineups, designs, gentleman's & women's cuts, color & highlights</li>
+            {c.ownerCard.bullets.map(b => (
+              <li class="flex gap-2"><span aria-hidden="true" style="color: var(--color-gold-deep)">★</span> {b}</li>
+            ))}
           </ul>
         </div>
       </aside>
 
       <div class="lg:col-span-8 prose-content">
         <p class="text-2xl leading-snug" style="font-family: var(--font-display); color: var(--color-ink);">
-          "Hi, I'm Kristy Rogers, owner of A Cut Above Barber Shop."
+          "{c.ownerStory.openingQuote}"
         </p>
         <p class="mt-6 text-lg leading-relaxed" style="color: var(--color-ink-soft);">
-          I've been in the barber industry for over 30 years, proudly serving the San Clemente
-          community. I'm also a military veteran and a surviving spouse of an active-duty service
-          member — and I take pride in providing clean, precise cuts for service members from
-          every branch.
+          {c.ownerStory.paragraph1}
         </p>
         <p class="mt-5 text-lg leading-relaxed" style="color: var(--color-ink-soft);">
-          My specialties include straight razor fades, lineups, designs, gentleman's cuts,
-          women's haircuts, and color services including highlights.
+          {c.ownerStory.paragraph2}
         </p>
         <p class="mt-5 text-lg leading-relaxed" style="color: var(--color-ink-soft);">
-          At A Cut Above Barber Shop, my goal is to create a fresh, modern, and welcoming space
-          where every client can relax, feel taken care of, and leave renewed and confident.
+          {c.ownerStory.paragraph3}
         </p>
 
         <hr class="my-10 border-0 h-px" style="background: var(--color-line);"/>
 
-        <h3 class="text-2xl font-semibold" style="font-family: var(--font-display);">Co-owned with DeAndre James</h3>
-        <p class="mt-4 text-lg leading-relaxed" style="color: var(--color-ink-soft);">
-          A Cut Above is co-owned by master barber <strong>DeAndre James</strong>. With 12+ years of
-          experience and a reputation for precision and creativity, DeAndre helps lead the shop
-          alongside Kristy, bringing his own specialty in clean fades, straight razor shaves,
-          intricate designs, hair color, and shear cutting.
-        </p>
-        <p class="mt-4 text-lg leading-relaxed" style="color: var(--color-ink-soft);">
-          Together, the ownership team sets the standard the rest of the chairs follow:
-          consistency, craft, and care — every cut, every visit.
-        </p>
+        <h3 class="text-2xl font-semibold" style="font-family: var(--font-display);">{c.coOwner.heading}</h3>
+        <p class="mt-4 text-lg leading-relaxed" style="color: var(--color-ink-soft);" set:html={renderBold(c.coOwner.paragraph1)} />
+        <p class="mt-4 text-lg leading-relaxed" style="color: var(--color-ink-soft);" set:html={renderBold(c.coOwner.paragraph2)} />
       </div>
     </div>
   </section>
@@ -72,18 +60,14 @@ const owners = barbers.filter(b => b.role === 'Owner' || b.role === 'Co-Owner');
   <!-- What sets us apart -->
   <section class="section" style="background: var(--color-cream-soft); border-block: 1px solid var(--color-line);">
     <div class="container-narrow">
-      <p class="eyebrow flex items-center gap-3"><span class="gold-rule"></span> What makes us different</p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold max-w-3xl">Experience, precision, and atmosphere, in that order.</h2>
+      <p class="eyebrow flex items-center gap-3"><span class="gold-rule"></span> {c.whatMakesUsDifferent.eyebrow}</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold max-w-3xl">{c.whatMakesUsDifferent.heading}</h2>
 
       <div class="mt-10 grid md:grid-cols-3 gap-5">
-        {[
-          { t: 'Experience', d: 'Three decades in the chair. Consistent, high-quality results from a team that has seen it all.' },
-          { t: 'Precision', d: 'Every fade, lineup, and razor edge is hand-finished. We don\'t cut corners. We cut hair.' },
-          { t: 'Atmosphere', d: 'A clean, modern shop where you can relax, refresh, and recharge, not a chair-shop conveyor belt.' },
-        ].map(item => (
+        {c.whatMakesUsDifferent.cards.map(item => (
           <article class="card p-6">
-            <h3 class="text-xl font-semibold" style="font-family: var(--font-display);">{item.t}</h3>
-            <p class="mt-3 text-sm leading-relaxed" style="color: var(--color-mute);">{item.d}</p>
+            <h3 class="text-xl font-semibold" style="font-family: var(--font-display);">{item.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed" style="color: var(--color-mute);">{item.body}</p>
           </article>
         ))}
       </div>
@@ -91,7 +75,7 @@ const owners = barbers.filter(b => b.role === 'Owner' || b.role === 'Co-Owner');
   </section>
 
   <CtaBand
-    heading="Come experience it for yourself."
-    subline="Walk-ins welcome. Same-day appointments often available. Call or text to lock in your barber."
+    heading={c.ctaHeading}
+    subline={c.ctaSubline}
   />
 </BaseLayout>

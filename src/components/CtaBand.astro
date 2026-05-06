@@ -1,12 +1,16 @@
 ---
 import { site } from '../data/site';
+import { copy } from '../data/copy';
+
 interface Props {
   heading?: string;
   subline?: string;
 }
+
+const c = copy.global.ctaBand;
 const {
-  heading = "Ready for a fresh cut?",
-  subline = "Call or text. Same-day appointments often available. Walk-ins welcome.",
+  heading = c.defaultHeading,
+  subline = c.defaultSubline,
 } = Astro.props;
 ---
 <section class="section" style="background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-soft) 100%);">
@@ -17,7 +21,7 @@ const {
     >
       <p class="eyebrow flex items-center justify-center gap-3" style="color: var(--color-gold);">
         <span class="gold-rule"></span>
-        Book today
+        {c.eyebrow}
         <span class="gold-rule"></span>
       </p>
       <h2 class="mt-4 text-3xl md:text-4xl font-semibold" style="color: var(--color-cream);">{heading}</h2>

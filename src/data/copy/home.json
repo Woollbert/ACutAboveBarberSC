@@ -1,0 +1,44 @@
+{
+  "metaDescription": "Veteran-owned barber shop in San Clemente. Precision cuts, military fades, straight razor shaves, gentleman's cuts, women's haircuts, color, and custom designs. Walk-ins welcome at 1006 S. El Camino Real, Suite A.",
+  "hero": {
+    "eyebrow": "San Clemente • Est. by veterans",
+    "headlineLine1": "Precision cuts.",
+    "headlineLine2": "Straight razor shaves.",
+    "headlineLine3": "Clean fades done right.",
+    "subtitle": "With over 30 years of experience, A Cut Above Barber Shop specializes in military cuts, modern styles, and detailed grooming for men and women, delivered with consistency, care, and attention to detail every visit.",
+    "stats": [
+      { "value": "30+", "label": "Years experience" },
+      { "value": "5", "label": "Skilled barbers" },
+      { "value": "All", "label": "Branches welcome" },
+      { "value": "100%", "label": "Walk-ins welcome" }
+    ],
+    "cardEyebrow": "The promise",
+    "cardQuote": "Sit back, relax, and leave sharp, confident, and refreshed."
+  },
+  "whyUs": {
+    "eyebrow": "What sets us apart",
+    "heading": "A clean, modern shop with three decades of craft.",
+    "intro": "We're San Clemente's veteran-owned barber shop. Every cut is delivered with consistency, care, and attention to detail in a space designed for you to relax, refresh, and recharge.",
+    "cards": [
+      { "title": "Veteran-owned", "body": "Owned by a military veteran and surviving spouse, proudly serving service members from every branch and the broader San Clemente community." },
+      { "title": "Precision craft", "body": "Straight razor fades, lineups, beard work, and detailed designs from barbers with decades of combined experience." },
+      { "title": "For everyone", "body": "Men, women, and kids. Military regulation cuts, gentleman's classics, modern styles, and color services." },
+      { "title": "Welcoming space", "body": "Complimentary shampoo and drinks. A clean, modern shop where you're a guest, not a number." }
+    ]
+  },
+  "servicesPreview": {
+    "eyebrow": "Services",
+    "heading": "A full menu of barber and hair services."
+  },
+  "barbersPreview": {
+    "eyebrow": "The chairs",
+    "heading": "Meet your barbers.",
+    "intro": "Each barber has their own specialty so you can choose the right fit for your style."
+  },
+  "visit": {
+    "eyebrow": "Find us",
+    "heading": "Right on El Camino Real in San Clemente.",
+    "intro": "Easy to find, easy to park. Walk-ins are welcome, and same-day appointments are often available. Call or text to lock in your barber.",
+    "extrasNote": "ATM available • Complimentary shampoo & drinks"
+  }
+}

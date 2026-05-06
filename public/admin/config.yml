@@ -175,3 +175,306 @@ collections:
                 fields:
                   - { label: "Photo",   name: "image",   widget: "image" }
                   - { label: "Caption", name: "caption", widget: "string", required: false, hint: "Short description, e.g. 'Skin fade with razor lineup'." }
+
+  # ─────────────────────────────────────────────────────────────
+  # PAGE COPY — every visible piece of marketing/body text on each page.
+  # Use this to edit headlines, subtitles, intros, feature card copy, etc.
+  # ─────────────────────────────────────────────────────────────
+  - name: "page-copy"
+    label: "Page Copy"
+    description: "Edit headlines, subtitles, and body text on every page of the site."
+    files:
+      # ─── HOME PAGE ───
+      - file: "src/data/copy/home.json"
+        label: "Home page"
+        name: "home"
+        editor: { preview: false }
+        fields:
+          - { label: "Browser meta description", name: "metaDescription", widget: "text", hint: "Shown in Google search results and social link previews. Keep under 160 characters." }
+          - label: "Hero (top of page)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",       name: "eyebrow",       widget: "string", hint: "Small label above the headline, e.g. 'San Clemente • Est. by veterans'" }
+              - { label: "Headline line 1", name: "headlineLine1", widget: "string" }
+              - { label: "Headline line 2", name: "headlineLine2", widget: "string" }
+              - { label: "Headline line 3 (gold)", name: "headlineLine3", widget: "string" }
+              - { label: "Subtitle",       name: "subtitle",      widget: "text" }
+              - label: "Stats (4 items)"
+                name: "stats"
+                widget: "list"
+                summary: "{{fields.value}} {{fields.label}}"
+                fields:
+                  - { label: "Value (e.g. '30+')", name: "value", widget: "string" }
+                  - { label: "Label (e.g. 'Years experience')", name: "label", widget: "string" }
+              - { label: "Card eyebrow",   name: "cardEyebrow",   widget: "string", hint: "Small label on the dark card, e.g. 'The promise'" }
+              - { label: "Card quote",     name: "cardQuote",     widget: "string", hint: "Italic quote on the dark card" }
+          - label: "Why us section"
+            name: "whyUs"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Heading",  name: "heading",  widget: "string" }
+              - { label: "Intro paragraph", name: "intro", widget: "text" }
+              - label: "Feature cards (4)"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body",  name: "body",  widget: "text" }
+          - label: "Services preview section"
+            name: "servicesPreview"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+          - label: "Barbers preview section"
+            name: "barbersPreview"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Intro",   name: "intro",   widget: "text" }
+          - label: "Visit section"
+            name: "visit"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",      name: "eyebrow",     widget: "string" }
+              - { label: "Heading",      name: "heading",     widget: "string" }
+              - { label: "Intro",        name: "intro",       widget: "text" }
+              - { label: "Extras note",  name: "extrasNote",  widget: "string", hint: "Small line under 'On-site' label, e.g. 'ATM available • Complimentary shampoo & drinks'" }
+
+      # ─── ABOUT PAGE ───
+      - file: "src/data/copy/about.json"
+        label: "About page"
+        name: "about"
+        editor: { preview: false }
+        fields:
+          - { label: "Browser meta description", name: "metaDescription", widget: "text" }
+          - label: "Page header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Title",    name: "title",    widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - label: "Owner card (sidebar)"
+            name: "ownerCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Name",     name: "name",     widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - label: "Bullets"
+                name: "bullets"
+                widget: "list"
+                field: { label: "Bullet", name: "bullet", widget: "string" }
+          - label: "Owner story (main column)"
+            name: "ownerStory"
+            widget: "object"
+            fields:
+              - { label: "Opening quote", name: "openingQuote", widget: "string", hint: "Big italic quote at the top, e.g. 'Hi, I'm Kristy Rogers...'" }
+              - { label: "Paragraph 1",   name: "paragraph1",   widget: "text" }
+              - { label: "Paragraph 2",   name: "paragraph2",   widget: "text" }
+              - { label: "Paragraph 3",   name: "paragraph3",   widget: "text" }
+          - label: "Co-owner section"
+            name: "coOwner"
+            widget: "object"
+            fields:
+              - { label: "Heading",     name: "heading",    widget: "string" }
+              - { label: "Paragraph 1 (use **text** for bold)", name: "paragraph1", widget: "text" }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text" }
+          - label: "What makes us different"
+            name: "whatMakesUsDifferent"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Cards (3)"
+                name: "cards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Body",  name: "body",  widget: "text" }
+          - { label: "CTA heading", name: "ctaHeading", widget: "string" }
+          - { label: "CTA subline", name: "ctaSubline", widget: "string" }
+
+      # ─── SERVICES PAGE ───
+      - file: "src/data/copy/services-page.json"
+        label: "Services page"
+        name: "services-page"
+        editor: { preview: false }
+        fields:
+          - { label: "Browser meta description", name: "metaDescription", widget: "text" }
+          - label: "Page header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Title",    name: "title",    widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - label: "Extras section ('Included with every visit')"
+            name: "extrasSection"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+          - label: "How it works"
+            name: "howItWorks"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Steps (3)"
+                name: "steps"
+                widget: "list"
+                summary: "{{fields.number}} {{fields.title}}"
+                fields:
+                  - { label: "Number", name: "number", widget: "string" }
+                  - { label: "Title",  name: "title",  widget: "string" }
+                  - { label: "Body",   name: "body",   widget: "text" }
+          - { label: "CTA heading", name: "ctaHeading", widget: "string" }
+
+      # ─── BARBERS PAGE ───
+      - file: "src/data/copy/barbers-page.json"
+        label: "Barbers page (list + detail)"
+        name: "barbers-page"
+        editor: { preview: false }
+        fields:
+          - { label: "Browser meta description", name: "metaDescription", widget: "text" }
+          - label: "Page header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Title",    name: "title",    widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - label: "Drop by section (bottom)"
+            name: "dropBy"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",         name: "eyebrow",        widget: "string" }
+              - { label: "Heading prefix",  name: "headingPrefix",  widget: "string", hint: "e.g. 'Call' (the phone number gets inserted between prefix and suffix)" }
+              - { label: "Heading suffix",  name: "headingSuffix",  widget: "string", hint: "e.g. 'to book with your preferred barber.'" }
+              - { label: "Subtitle",        name: "subtitle",       widget: "text" }
+          - { label: "CTA heading", name: "ctaHeading", widget: "string" }
+          - label: "Per-barber detail page (one bio page each)"
+            name: "detail"
+            widget: "object"
+            hint: "Used on every individual barber's page, e.g. /barbers/kristy-rogers/. Use {firstName} as a placeholder."
+            fields:
+              - { label: "Back link text",          name: "backLink",            widget: "string" }
+              - { label: "About label",             name: "aboutLabel",          widget: "string" }
+              - { label: "Specialties label",       name: "specialtiesLabel",    widget: "string" }
+              - { label: "Portfolio eyebrow",       name: "portfolioEyebrow",    widget: "string", hint: "{firstName} = barber's first name" }
+              - { label: "Portfolio heading",       name: "portfolioHeading",    widget: "string" }
+              - { label: "Empty portfolio message", name: "emptyPortfolioMessage", widget: "text" }
+              - { label: "Empty portfolio button",  name: "emptyPortfolioCta",   widget: "string" }
+              - { label: "CTA heading",             name: "ctaHeading",          widget: "string", hint: "{firstName} = barber's first name" }
+
+      # ─── GALLERY PAGE ───
+      - file: "src/data/copy/gallery-page.json"
+        label: "Gallery page"
+        name: "gallery-page"
+        editor: { preview: false }
+        fields:
+          - { label: "Browser meta description", name: "metaDescription", widget: "text" }
+          - label: "Page header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Title",    name: "title",    widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - { label: "Footer note (under photo grid)", name: "footerNote", widget: "text" }
+          - { label: "CTA heading", name: "ctaHeading", widget: "string" }
+
+      # ─── CONTACT PAGE ───
+      - file: "src/data/copy/contact-page.json"
+        label: "Visit & Book page"
+        name: "contact-page"
+        editor: { preview: false }
+        fields:
+          - { label: "Browser meta description", name: "metaDescription", widget: "text" }
+          - label: "Page header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Title",    name: "title",    widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+          - label: "Call card"
+            name: "callCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - label: "Text card"
+            name: "textCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - label: "Book online card"
+            name: "bookOnlineCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - label: "Drive over card"
+            name: "driveOverCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - label: "Hours card"
+            name: "hoursCard"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow",  name: "eyebrow",  widget: "string" }
+              - { label: "Footnote", name: "footnote", widget: "text" }
+          - label: "Good to know"
+            name: "goodToKnow"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+
+      # ─── GLOBAL: footer, CTA defaults, 404 ───
+      - file: "src/data/copy/global.json"
+        label: "Global (footer, CTA defaults, 404)"
+        name: "global"
+        editor: { preview: false }
+        fields:
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Brand line (under logo)", name: "brandLine", widget: "text" }
+              - { label: "Bottom tagline",          name: "tagline",   widget: "string" }
+              - { label: "Visit heading",           name: "visit",     widget: "string" }
+              - { label: "Hours heading",           name: "hours",     widget: "string" }
+              - { label: "Explore heading",         name: "explore",   widget: "string" }
+              - { label: "Follow heading",          name: "follow",    widget: "string" }
+          - label: "CTA band defaults"
+            name: "ctaBand"
+            widget: "object"
+            hint: "These show on every page's bottom CTA section unless overridden by that page."
+            fields:
+              - { label: "Eyebrow",          name: "eyebrow",         widget: "string" }
+              - { label: "Default heading",  name: "defaultHeading",  widget: "string" }
+              - { label: "Default subline",  name: "defaultSubline",  widget: "text" }
+          - label: "404 (page not found)"
+            name: "notFound"
+            widget: "object"
+            fields:
+              - { label: "Browser meta description", name: "metaDescription", widget: "text" }
+              - { label: "Eyebrow",      name: "eyebrow",     widget: "string" }
+              - { label: "Title",        name: "title",       widget: "string" }
+              - { label: "Subtitle",     name: "subtitle",    widget: "text" }
+              - { label: "Home button",  name: "homeButton",  widget: "string" }

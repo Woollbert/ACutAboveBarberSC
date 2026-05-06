@@ -6,15 +6,15 @@ import BarberAvatar from '../../components/BarberAvatar.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import { barbers } from '../../data/barbers';
 import { site } from '../../data/site';
+import { copy } from '../../data/copy';
+
+const c = copy.barbersPage;
 ---
-<BaseLayout
-  title="Meet the Barbers"
-  description="Meet the team at A Cut Above Barber Shop in San Clemente: owner Kristy Rogers, co-owner DeAndre James, Heather Bravo, Mario Gonzalez, and Rafa. Each barber brings their own specialty so you can choose the right fit for your style."
->
+<BaseLayout title="Meet the Barbers" description={c.metaDescription}>
   <PageHeader
-    eyebrow="The team"
-    title="Meet the barbers."
-    subtitle="At A Cut Above, our team brings experience, precision, and passion to every cut. Each barber has their own specialty — click any name to see their full portfolio."
+    eyebrow={c.header.eyebrow}
+    title={c.header.title}
+    subtitle={c.header.subtitle}
   />
 
   <section class="section">
@@ -73,13 +73,13 @@ import { site } from '../../data/site';
 
   <section class="section" style="background: var(--color-cream-soft); border-top: 1px solid var(--color-line);">
     <div class="container-narrow text-center">
-      <p class="eyebrow flex items-center justify-center gap-3"><span class="gold-rule"></span> Drop by <span class="gold-rule"></span></p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Call <a href={`tel:${site.phoneTel}`} style="color: var(--color-gold-deep);" class="hover:underline">{site.phone}</a> to book with your preferred barber.</h2>
+      <p class="eyebrow flex items-center justify-center gap-3"><span class="gold-rule"></span> {c.dropBy.eyebrow} <span class="gold-rule"></span></p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">{c.dropBy.headingPrefix} <a href={`tel:${site.phoneTel}`} style="color: var(--color-gold-deep);" class="hover:underline">{site.phone}</a> {c.dropBy.headingSuffix}</h2>
       <p class="mt-4 text-lg" style="color: var(--color-mute);">
-        Or stop by 1006 S. El Camino Real, Suite A, San Clemente, CA 92672.
+        {c.dropBy.subtitle}
       </p>
     </div>
   </section>
 
-  <CtaBand heading="Find your chair." />
+  <CtaBand heading={c.ctaHeading} />
 </BaseLayout>

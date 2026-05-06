@@ -1,0 +1,22 @@
+{
+  "footer": {
+    "brandLine": "Veteran-owned in San Clemente. Precision cuts, straight razor shaves, and clean fades — done right by a team with decades of combined experience.",
+    "tagline": "Veteran-owned • All military branches welcome • San Clemente, CA",
+    "explore": "Explore",
+    "follow": "Follow",
+    "visit": "Visit",
+    "hours": "Hours"
+  },
+  "ctaBand": {
+    "eyebrow": "Book today",
+    "defaultHeading": "Ready for a fresh cut?",
+    "defaultSubline": "Call or text. Same-day appointments often available. Walk-ins welcome."
+  },
+  "notFound": {
+    "metaDescription": "Sorry — that page isn't here. Head back to the home page or call us to book.",
+    "eyebrow": "404",
+    "title": "That page got a fade.",
+    "subtitle": "The page you're looking for isn't here. But your next great cut still is.",
+    "homeButton": "Back to home"
+  }
+}

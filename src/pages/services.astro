@@ -4,15 +4,15 @@ import PageHeader from '../components/PageHeader.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { services, extras, pricingIsPlaceholder } from '../data/services';
 import { site } from '../data/site';
+import { copy } from '../data/copy';
+
+const c = copy.servicesPage;
 ---
-<BaseLayout
-  title="Services"
-  description="Full menu of barber and hair services at A Cut Above Barber Shop in San Clemente: military and regulation cuts, straight razor fades and lineups, beard trims and straight razor shaves, gentleman's cuts, women's haircuts, color and highlights, and custom designs."
->
+<BaseLayout title="Services" description={c.metaDescription}>
   <PageHeader
-    eyebrow="Services & experience"
-    title="A full menu, finished with care."
-    subtitle="A complete range of barber and hair services for men and women. Every visit includes attention to detail in a clean, comfortable environment."
+    eyebrow={c.header.eyebrow}
+    title={c.header.title}
+    subtitle={c.header.subtitle}
   />
 
   <section class="section">
@@ -67,8 +67,8 @@ import { site } from '../data/site';
   <!-- Included with every visit -->
   <section class="section" style="background: var(--color-cream-soft); border-block: 1px solid var(--color-line);">
     <div class="container-narrow text-center">
-      <p class="eyebrow flex items-center justify-center gap-3"><span class="gold-rule"></span> Included with every visit <span class="gold-rule"></span></p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">Little touches. Big difference.</h2>
+      <p class="eyebrow flex items-center justify-center gap-3"><span class="gold-rule"></span> {c.extrasSection.eyebrow} <span class="gold-rule"></span></p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold">{c.extrasSection.heading}</h2>
 
       <ul class="mt-10 grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
         {extras.map(x => (
@@ -84,24 +84,20 @@ import { site } from '../data/site';
   <!-- How it works -->
   <section class="section">
     <div class="container-narrow">
-      <p class="eyebrow flex items-center gap-3"><span class="gold-rule"></span> How it works</p>
-      <h2 class="mt-3 text-3xl md:text-4xl font-semibold max-w-2xl">Simple, friendly, no surprises.</h2>
+      <p class="eyebrow flex items-center gap-3"><span class="gold-rule"></span> {c.howItWorks.eyebrow}</p>
+      <h2 class="mt-3 text-3xl md:text-4xl font-semibold max-w-2xl">{c.howItWorks.heading}</h2>
 
       <ol class="mt-10 grid md:grid-cols-3 gap-4">
-        {[
-          { n: '01', t: 'Call or text', d: `Reach us at ${site.phone}. Tell us the service you want and your preferred barber.` },
-          { n: '02', t: 'Show up sharp', d: 'Walk in or stop by your scheduled time. Grab a complimentary drink and relax.' },
-          { n: '03', t: 'Leave refreshed', d: 'Sharp cut, hot-towel finish where it fits, and you\'re out the door confident.' },
-        ].map(step => (
+        {c.howItWorks.steps.map(step => (
           <li class="card p-6">
-            <p class="text-3xl font-semibold" style="font-family: var(--font-display); color: var(--color-gold-deep);">{step.n}</p>
-            <h3 class="mt-2 text-lg font-semibold" style="font-family: var(--font-sans);">{step.t}</h3>
-            <p class="mt-2 text-sm leading-relaxed" style="color: var(--color-mute);">{step.d}</p>
+            <p class="text-3xl font-semibold" style="font-family: var(--font-display); color: var(--color-gold-deep);">{step.number}</p>
+            <h3 class="mt-2 text-lg font-semibold" style="font-family: var(--font-sans);">{step.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed" style="color: var(--color-mute);">{step.body}</p>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <CtaBand heading="Pick your service. We'll handle the rest." />
+  <CtaBand heading={c.ctaHeading} />
 </BaseLayout>

@@ -1,0 +1,25 @@
+{
+  "metaDescription": "Meet the team at A Cut Above Barber Shop in San Clemente: owner Kristy Rogers, co-owner DeAndre James, Heather Bravo, Mario Gonzalez, and Rafa. Each barber brings their own specialty so you can choose the right fit for your style.",
+  "header": {
+    "eyebrow": "The team",
+    "title": "Meet the barbers.",
+    "subtitle": "At A Cut Above, our team brings experience, precision, and passion to every cut. Each barber has their own specialty — click any name to see their full portfolio."
+  },
+  "dropBy": {
+    "eyebrow": "Drop by",
+    "headingPrefix": "Call",
+    "headingSuffix": "to book with your preferred barber.",
+    "subtitle": "Or stop by 1006 S. El Camino Real, Suite A, San Clemente, CA 92672."
+  },
+  "ctaHeading": "Find your chair.",
+  "detail": {
+    "backLink": "All barbers",
+    "aboutLabel": "About",
+    "specialtiesLabel": "Specialties",
+    "portfolioEyebrow": "{firstName}'s portfolio",
+    "portfolioHeading": "Recent work.",
+    "emptyPortfolioMessage": "{firstName}'s portfolio is coming soon. In the meantime, see the full shop gallery for examples of our work.",
+    "emptyPortfolioCta": "View shop gallery →",
+    "ctaHeading": "Book your cut with {firstName}."
+  }
+}
