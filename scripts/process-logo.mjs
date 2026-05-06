@@ -38,13 +38,16 @@ for (const { name, size } of [{ name: 'logo-256-light.png', size: 256 }, { name:
   console.log(`✓ public/${name} (${(out.length / 1024).toFixed(1)} KB)`);
 }
 
-// 2. Favicon ICO replacement (32x32 PNG works as favicon in modern browsers)
-const fav = await sharp(trimmed)
-  .resize({ width: 32, height: 32, fit: 'contain', background: { r: 22, g: 17, b: 11, alpha: 1 } })
-  .png()
-  .toBuffer();
-await fs.writeFile('public/favicon-32.png', fav);
-console.log(`✓ public/favicon-32.png (${(fav.length / 1024).toFixed(1)} KB)`);
+// 2. Favicons — real logo on cream background, sized for browser tabs.
+//    Cream bg matches the site palette and gives the dark logo strokes high contrast.
+for (const size of [16, 32, 48, 192]) {
+  const fav = await sharp(trimmed)
+    .resize({ width: size, height: size, fit: 'contain', background: { r: 247, g: 243, b: 236, alpha: 1 } })
+    .png()
+    .toBuffer();
+  await fs.writeFile(`public/favicon-${size}.png`, fav);
+  console.log(`✓ public/favicon-${size}.png (${(fav.length / 1024).toFixed(1)} KB)`);
+}
 
 // 3. Apple touch icon (180x180 standard)
 const apple = await sharp(trimmed)
