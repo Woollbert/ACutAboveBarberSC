@@ -19,7 +19,7 @@
 
 ## 1. Why this spec exists
 
-We currently use Fresha (free tier) for booking. Fresha is excellent and free for our needs. But owning the booking system would give us:
+We currently use Fresha for booking. **Note: Fresha sunset their free tier in 2025** — current pricing is $14.95/staff/month on the Team plan, ~$75/month for our 5-barber shop. (Earlier versions of this spec said "free" — that's outdated.) But owning the booking system ourselves would give us:
 
 - 100% brand consistency (no Fresha logo/UX leakage)
 - Full data control (customer DB, booking history)
@@ -383,7 +383,9 @@ If at any point during the build the calculus shifts, here are the off-ramps:
 
 | Alternative | Cost | When it's right |
 |---|---|---|
-| **Fresha free tier** (current) | $0 | Status quo. Best ROI by miles. |
+| **Fresha Team plan** (current) | ~$75/mo for 5 barbers | Status quo. No longer free as of 2025. |
+| **Setmore Pro** | $12/mo unlimited staff | Cheapest functional alternative. |
+| **Square Appointments** | $29/mo flat for 2–5 staff | Flat fee, includes POS integration. |
 | **Setmore free** (4-staff cap) | $0 | If you want a different vendor than Fresha. |
 | **Square Appointments** | $29–69/mo | If you also want POS integration. |
 | **Booksy** | ~$30/mo | If you want barbershop-specific UX over salon-generic. |
