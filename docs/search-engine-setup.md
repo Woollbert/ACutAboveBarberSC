@@ -85,27 +85,27 @@ Same idea, but for Bing (and DuckDuckGo, which uses Bing's index).
 
 ---
 
-## Step 3 — Update third-party listings (optional but high-value)
+## Step 3 — Third-party listings (deliberately SKIPPED for this shop)
 
-You already noticed that Yelp and BestProsInTown have listings for the shop. They're showing up in search results, but they don't yet link to the official website. Adding the URL takes 2 minutes per platform and helps a lot:
+**Strategic decision:** A Cut Above intentionally does NOT amplify its Yelp, BestProsInTown, or similar third-party listings. Why:
 
-### Yelp
-1. Go to https://biz.yelp.com/
-2. Claim/log into the A Cut Above Barbershop listing
-3. Edit the business profile → add `https://acutabovebarbersc.com` to the "Website" field
-4. Save
+- Yelp has some bad reviews on the shop from disgruntled customers that don't reflect actual shop quality.
+- Sending traffic to those listings hurts conversion (visitor sees mixed reviews + a list of 10 competitor barbershops).
+- The owned website (acutabovebarbersc.com) is polished, on-brand, and contains zero competitor comparisons.
+- Better to have customers discover the actual website directly via Google than to land on a Yelp page.
 
-### BestProsInTown
-1. Go to https://www.bestprosintown.com/
-2. Search for "A Cut Above Barber Shop"
-3. There's usually a "Claim this business" or "Update info" link
-4. Add the website URL
+**So skip:**
+- Yelp claim / website-link update
+- BestProsInTown claim
+- Booksy listing
+- Any aggregator-style review platform
 
-### Other directories worth claiming (~5 min each, all free)
-- **Apple Business Connect** (Apple Maps): https://businessconnect.apple.com/ — free, can import from Google
-- **Foursquare/Factual**: https://business.foursquare.com/ — many other apps source data from here
-- **Nextdoor for Business**: https://business.nextdoor.com/ — local-community-focused, great for word-of-mouth
-- **Better Business Bureau**: https://www.bbb.org/get-listed (optional — free basic listing)
+**Do still consider (these are owned media, not aggregators):**
+- **Google Business Profile** — Google reviews can be replied to and managed. This is the one local-listing platform worth investing in.
+- **Apple Business Connect** — just metadata for Apple Maps; no review aggregation page.
+- **Nextdoor for Business** — local community word-of-mouth; reviews here are typically positive intent.
+
+**When customers ask "where should I leave a review?":** point them to **Google**, not Yelp. Yelp's algorithm aggressively filters and surfaces "elite" reviewer opinions in ways that small businesses can't influence; Google is fairer.
 
 ---
 
