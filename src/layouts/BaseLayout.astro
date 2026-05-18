@@ -29,7 +29,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? site.url);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#16110b" />
     <meta name="generator" content={Astro.generator} />
-    <!-- Adaptive favicons: cream-bg variant for light browser themes, ink-bg variant for dark themes. -->
+    <!-- Search-engine favicon: Google and Bing fetch /favicon.ico directly when picking
+         the icon shown next to the URL in search results. The 192px PNG fallback below
+         satisfies Google's recommended ≥48px size. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192-dark.png" />
+    <!-- Adaptive favicons for browser tabs: cream-bg for light themes, ink-bg for dark. -->
     <link rel="icon" type="image/png" sizes="16x16"   href="/favicon-16-light.png"  media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/png" sizes="32x32"   href="/favicon-32-light.png"  media="(prefers-color-scheme: light)" />
     <link rel="icon" type="image/png" sizes="48x48"   href="/favicon-48-light.png"  media="(prefers-color-scheme: light)" />
@@ -38,8 +43,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? site.url);
     <link rel="icon" type="image/png" sizes="32x32"   href="/favicon-32-dark.png"   media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/png" sizes="48x48"   href="/favicon-48-dark.png"   media="(prefers-color-scheme: dark)" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192-dark.png"  media="(prefers-color-scheme: dark)" />
-    <!-- Fallback for older browsers that ignore the media query -->
-    <link rel="icon" type="image/png" sizes="32x32"   href="/favicon-32-dark.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonicalURL} />
 

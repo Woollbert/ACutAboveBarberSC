@@ -90,4 +90,38 @@ const apple = await sharp(trimmed)
 await fs.writeFile('public/apple-touch-icon.png', apple);
 console.log(`✓ public/apple-touch-icon.png (${(apple.length / 1024).toFixed(1)} KB)`);
 
+// 4. /favicon.ico — Google and Bing fetch this URL directly when picking the
+//    favicon for search results. Pack the dark-bg PNGs at 16/32/48 so the result
+//    pops against the white search results page on every search engine.
+//    ICO format: 6-byte header + N×16-byte directory entries + concatenated PNG payloads.
+async function pngBufFromFavicon(size) {
+  return await fs.readFile(`public/favicon-${size}-dark.png`);
+}
+const icoSizes = [16, 32, 48];
+const pngs = await Promise.all(icoSizes.map(pngBufFromFavicon));
+const header = Buffer.alloc(6);
+header.writeUInt16LE(0, 0);              // reserved
+header.writeUInt16LE(1, 2);              // type: 1 = icon
+header.writeUInt16LE(pngs.length, 4);    // image count
+const dirEntries = [];
+let offset = 6 + 16 * pngs.length;
+for (let i = 0; i < pngs.length; i++) {
+  const size = icoSizes[i];
+  const png = pngs[i];
+  const entry = Buffer.alloc(16);
+  entry.writeUInt8(size === 256 ? 0 : size, 0);    // width  (0 means 256)
+  entry.writeUInt8(size === 256 ? 0 : size, 1);    // height
+  entry.writeUInt8(0, 2);                          // palette
+  entry.writeUInt8(0, 3);                          // reserved
+  entry.writeUInt16LE(1, 4);                       // color planes
+  entry.writeUInt16LE(32, 6);                      // bits per pixel
+  entry.writeUInt32LE(png.length, 8);              // payload size
+  entry.writeUInt32LE(offset, 12);                 // payload offset
+  dirEntries.push(entry);
+  offset += png.length;
+}
+const ico = Buffer.concat([header, ...dirEntries, ...pngs]);
+await fs.writeFile('public/favicon.ico', ico);
+console.log(`✓ public/favicon.ico (${(ico.length / 1024).toFixed(1)} KB, ${icoSizes.join('/')}px)`);
+
 console.log('Done.');
